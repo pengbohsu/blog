@@ -1,0 +1,847 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-fences-math .MathJax_SVG_Display, .md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: visible; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; zoom: 90%; }
+#math-inline-preview-content { zoom: 1.1; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-require-zoom-fix foreignobject { font-size: var(--mermaid-font-zoom); }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-math .MathJax_SVG_Display { margin-top: 8px; cursor: default; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+ :root {--mermaid-font-zoom:1.25em ;} 
+</style><title>review</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='nlp复习'><span>NLP复习</span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n6298"><a class="md-toc-inner" href="#nlp复习">NLP复习</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n6301"><a class="md-toc-inner" href="#绪论">绪论</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6302"><a class="md-toc-inner" href="#基本概念-1">基本概念</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6303"><a class="md-toc-inner" href="#定义1-1语言学linguistics">定义1-1：语言学(linguistics)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6305"><a class="md-toc-inner" href="#定义1-2语音学phonetics">定义1-2：语音学(phonetics)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6307"><a class="md-toc-inner" href="#定义1-3计算语言学computational-linguistics">定义1-3：计算语言学(Computational Linguistics)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6309"><a class="md-toc-inner" href="#定义1-4自然语言理解natural-language-understanding-nlu">定义1-4：自然语言理解(Natural Language Understanding, NLU)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6311"><a class="md-toc-inner" href="#定义1-5-自然语言处理natural-language-processing-nlp">定义1-5: 自然语言处理(Natural Language Processing, NLP)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6313"><a class="md-toc-inner" href="#定义1-6中文信息处理chinese-information-processing">定义1-6：中文信息处理(Chinese Information Processing)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6315"><a class="md-toc-inner" href="#三个不同的语系">三个不同的语系</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6326"><a class="md-toc-inner" href="#hlt的产生与发展">HLT的产生与发展</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6350"><a class="md-toc-inner" href="#基本问题和主要困难">基本问题和主要困难</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6351"><a class="md-toc-inner" href="#基本问题之一形态学morphology-问题">基本问题之一：形态学(Morphology) 问题</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6353"><a class="md-toc-inner" href="#基本问题之二句法syntax-问题">基本问题之二：句法(Syntax) 问题</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6355"><a class="md-toc-inner" href="#基本问题之三语义semantics-问题">基本问题之三：语义(Semantics) 问题</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6357"><a class="md-toc-inner" href="#基本问题之四语用学pragmatics-问题">基本问题之四：语用学(Pragmatics) 问题</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6359"><a class="md-toc-inner" href="#基本问题之五语音学phonetics-问题">基本问题之五：语音学(Phonetics) 问题</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6361"><a class="md-toc-inner" href="#困难之一大量歧义ambiguity现象">困难之一：大量歧义(ambiguity)现象</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6375"><a class="md-toc-inner" href="#困难之二大量未知语言现象">困难之二：大量未知语言现象</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6388"><a class="md-toc-inner" href="#基本研究方法">基本研究方法</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n6405"><a class="md-toc-inner" href="#数学基础">数学基础</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6406"><a class="md-toc-inner" href="#概率论基础">概率论基础</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6407"><a class="md-toc-inner" href="#基本概念-2">基本概念</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6409"><a class="md-toc-inner" href="#信息论基础">信息论基础</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n6446"><a class="md-toc-inner" href="#语言模型">语言模型</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6447"><a class="md-toc-inner" href="#n-元文法n-gram模型">n 元文法(n-gram)模型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6452"><a class="md-toc-inner" href="#应用-1音字转换问题">应用-1：音字转换问题</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6455"><a class="md-toc-inner" href="#应用-2汉语分词问题">应用-2：汉语分词问题</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6458"><a class="md-toc-inner" href="#数据平滑">数据平滑</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6459"><a class="md-toc-inner" href="#基本思想">基本思想：</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6462"><a class="md-toc-inner" href="#加1法additive-smoothing-">加1法(Additive smoothing )</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6466"><a class="md-toc-inner" href="#减值法折扣法discounting">减值法/折扣法(Discounting)</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n6468"><a class="md-toc-inner" href="#①good-turing-估计">①Good-Turing 估计</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n6474"><a class="md-toc-inner" href="#②back-off-后备后退方法">②Back-off (后备/后退)方法</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n6477"><a class="md-toc-inner" href="#③绝对减值法-absolute-discounting-">③绝对减值法 (Absolute discounting )</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n6480"><a class="md-toc-inner" href="#④线性减值法-linear-discounting-">④线性减值法 (Linear discounting )</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6488"><a class="md-toc-inner" href="#语言模型的自适应方法">语言模型的自适应方法：</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6489"><a class="md-toc-inner" href="#1基于缓存的语言模型-cache-based-lm">(1)基于缓存的语言模型 (cache-based LM)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6495"><a class="md-toc-inner" href="#2基于混合方法的语言模型">(2)基于混合方法的语言模型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6500"><a class="md-toc-inner" href="#3基于最大熵的语言模型">(3)基于最大熵的语言模型</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6507"><a class="md-toc-inner" href="#应用到汉语分词">应用到汉语分词</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n6510"><a class="md-toc-inner" href="#隐马尔可夫模型与条件随机场">隐马尔可夫模型与条件随机场</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6514"><a class="md-toc-inner" href="#隐马尔可夫模型">隐马尔可夫模型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6517"><a class="md-toc-inner" href="#一般来说隐马尔可夫模型中包含下面三个问题">一般来说，隐马尔可夫模型中包含下面三个问题：</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6529"><a class="md-toc-inner" href="#条件随机场">条件随机场</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n6537"><a class="md-toc-inner" href="#词法分析与词性标注">词法分析与词性标注</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6538"><a class="md-toc-inner" href="#概述">概述</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6540"><a class="md-toc-inner" href="#不同语言的词法分析">不同语言的词法分析</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6550"><a class="md-toc-inner" href="#英语的形态分析">英语的形态分析</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6557"><a class="md-toc-inner" href="#汉语自动分词">汉语自动分词</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6575"><a class="md-toc-inner" href="#分词与词性标注结果评价方法">分词与词性标注结果评价方法</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6582"><a class="md-toc-inner" href="#评价指标">评价指标</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6590"><a class="md-toc-inner" href="#汉语自动分词基本算法">汉语自动分词基本算法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6603"><a class="md-toc-inner" href="#词性标注方法">词性标注方法</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6604"><a class="md-toc-inner" href="#基于规则的词性标注方法">基于规则的词性标注方法</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6610"><a class="md-toc-inner" href="#基于统计模型的词性标注方法">基于统计模型的词性标注方法</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6615"><a class="md-toc-inner" href="#基于-hmm-的词性标注方法">基于 HMM 的词性标注方法</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6616"><a class="md-toc-inner" href="#规则和统计方法相结合的词性标注方法">规则和统计方法相结合的词性标注方法</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6622"><a class="md-toc-inner" href="#基于有限状态变换机的词性标注方法">基于有限状态变换机的词性标注方法</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6623"><a class="md-toc-inner" href="#基于神经网络的词性标注方法">基于神经网络的词性标注方法</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n6625"><a class="md-toc-inner" href="#语义分析">语义分析</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6627"><a class="md-toc-inner" href="#语义理论">语义理论</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6629"><a class="md-toc-inner" href="#格语法">格语法</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6630"><a class="md-toc-inner" href="#基本观点">基本观点</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6632"><a class="md-toc-inner" href="#格的定义">格的定义</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6634"><a class="md-toc-inner" href="#格语法的三条基本规则">格语法的三条基本规则</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6641"><a class="md-toc-inner" href="#格表">格表</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6644"><a class="md-toc-inner" href="#格语法描写汉语的局限性">格语法描写汉语的局限性</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6646"><a class="md-toc-inner" href="#语义网络">语义网络</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6647"><a class="md-toc-inner" href="#语义网络的概念">语义网络的概念</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6656"><a class="md-toc-inner" href="#概念依存理论">概念依存理论</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6667"><a class="md-toc-inner" href="#词义消歧">词义消歧</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6668"><a class="md-toc-inner" href="#基本方法">基本方法</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6684"><a class="md-toc-inner" href="#有监督的词义消歧方法">有监督的词义消歧方法</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6695"><a class="md-toc-inner" href="#基于词典的词义消歧方法">基于词典的词义消歧方法</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6706"><a class="md-toc-inner" href="#无监督的词义消歧方法">无监督的词义消歧方法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6709"><a class="md-toc-inner" href="#语义角色标注">语义角色标注</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n6712"><a class="md-toc-inner" href="#机器翻译">机器翻译</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6719"><a class="md-toc-inner" href="#机器翻译的困难">机器翻译的困难</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6728"><a class="md-toc-inner" href="#直接转换法">直接转换法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6730"><a class="md-toc-inner" href="#基于规则的翻译方法">基于规则的翻译方法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6735"><a class="md-toc-inner" href="#基于中间语言的翻译方法">基于中间语言的翻译方法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6745"><a class="md-toc-inner" href="#基于语料库的翻译方法">基于语料库的翻译方法</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6746"><a class="md-toc-inner" href="#基于事例的翻译方法">基于事例的翻译方法</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n6750"><a class="md-toc-inner" href="#统计翻译方法">统计翻译方法</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6753"><a class="md-toc-inner" href="#噪声信道模型"><strong>噪声信道模型</strong></a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6760"><a class="md-toc-inner" href="#统计翻译中的三个关键问题"><strong>统计翻译中的三个关键问题</strong>：</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6764"><a class="md-toc-inner" href="#基于词的机器翻译建模">基于词的机器翻译建模</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6803"><a class="md-toc-inner" href="#基于短语的翻译模型">基于短语的翻译模型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6807"><a class="md-toc-inner" href="#基于最大熵的方法判别式">基于最大熵的方法(判别式)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6811"><a class="md-toc-inner" href="#基于短语的翻译模型koehn-2003">基于短语的翻译模型[Koehn, 2003]</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n6813"><a class="md-toc-inner" href="#短语划分模型">短语划分模型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6816"><a class="md-toc-inner" href="#基于短语的翻译模型的解码算法">基于短语的翻译模型的解码算法</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n6818"><a class="md-toc-inner" href="#柱搜索beam-search-ney-1992-tillmann-2003">柱搜索(<strong>beam search</strong>) [Ney, 1992; Tillmann, 2003]</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6822"><a class="md-toc-inner" href="#基于层次化短语的翻译模型">基于层次化短语的翻译模型</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6833"><a class="md-toc-inner" href="#树翻译模型">树翻译模型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6836"><a class="md-toc-inner" href="#树到串的翻译模型">树到串的翻译模型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6843"><a class="md-toc-inner" href="#树到树的翻译模型">树到树的翻译模型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6850"><a class="md-toc-inner" href="#串到树的翻译模型">串到树的翻译模型</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6858"><a class="md-toc-inner" href="#系统融合">系统融合</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6864"><a class="md-toc-inner" href="#译文评估方法">译文评估方法</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n6873"><a class="md-toc-inner" href="#神经网络机器翻译">神经网络机器翻译</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6874"><a class="md-toc-inner" href="#单词表示模型">单词表示模型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6876"><a class="md-toc-inner" href="#one-hot-编码">One-hot 编码</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6880"><a class="md-toc-inner" href="#分布式表示">分布式表示</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6890"><a class="md-toc-inner" href="#word2vec">word2vec</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n6894"><a class="md-toc-inner" href="#cbow">CBOW</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n6925"><a class="md-toc-inner" href="#skip-gram">Skip-gram</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n6931"><a class="md-toc-inner" href="#transfer-learning">transfer learning</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6933"><a class="md-toc-inner" href="#model-fine-tuning-labelled-source-labelled-target">Model Fine-tuning (labelled source, labelled target)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6958"><a class="md-toc-inner" href="#multitask-learning-labelled-source-labelled-target">Multitask Learning (labelled source, labelled target)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6961"><a class="md-toc-inner" href="#domain-adversarial-training-labelled-source-unlabelled-target">Domain-adversarial training (labelled source, unlabelled target)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6967"><a class="md-toc-inner" href="#zero-shot-leaning-labelled-source-unlabelled-target">Zero-shot Leaning (labelled source, unlabelled target)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6974"><a class="md-toc-inner" href="#self-taught-learning-和-self-taught-clustering">Self-taught learning 和 Self-taught Clustering</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6976"><a class="md-toc-inner" href="#前馈神经网络语言模型">前馈神经网络语言模型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6978"><a class="md-toc-inner" href="#编码器-解码器模型">编码器-解码器模型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n6983"><a class="md-toc-inner" href="#循环神经网络模型">循环神经网络模型</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n6990"><a class="md-toc-inner" href="#lstm">LSTM</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n6993"><a class="md-toc-inner" href="#gru">GRU</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n6996"><a class="md-toc-inner" href="#双向模型">双向模型</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n7000"><a class="md-toc-inner" href="#注意力机制">注意力机制</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n7009"><a class="md-toc-inner" href="#gnmt">GNMT</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n7011"><a class="md-toc-inner" href="#自注意力机制">自注意力机制</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n7014"><a class="md-toc-inner" href="#transformer">transformer</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n7017"><a class="md-toc-inner" href="#架构">架构</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n7029"><a class="md-toc-inner" href="#编码器">编码器</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n7031"><a class="md-toc-inner" href="#解码器">解码器</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n7038"><a class="md-toc-inner" href="#神经机器翻译结构优化">神经机器翻译结构优化</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n7043"><a class="md-toc-inner" href="#感想">感想</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n7053"><a class="md-toc-inner" href="#情感分析">情感分析</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n7057"><a class="md-toc-inner" href="#相关定义">相关定义</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n7059"><a class="md-toc-inner" href="#情感分析发展七项关键技术">情感分析发展七项关键技术</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n7244"><a class="md-toc-inner" href="#文本自动摘要">文本自动摘要</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n7245"><a class="md-toc-inner" href="#文本摘要的定义">文本摘要的定义</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n7247"><a class="md-toc-inner" href="#文本摘要分类">文本摘要分类</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n7255"><a class="md-toc-inner" href="#文本摘要方法">文本摘要方法</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n7257"><a class="md-toc-inner" href="#抽取式摘要">抽取式摘要</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n7291"><a class="md-toc-inner" href="#压缩式摘要">压缩式摘要</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n7297"><a class="md-toc-inner" href="#理解式摘要">理解式摘要</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n7306"><a class="md-toc-inner" href="#文本摘要评价">文本摘要评价</a></span></p></div><h2 id='绪论'><span>绪论</span></h2><h3 id='基本概念-1'><span>基本概念</span></h3><h4 id='定义1-1语言学linguistics'><span>定义1-1：语言学(linguistics)</span></h4><p><span>语言学是指对语言的科学研究。</span>
+<span>研究语言的本质、结构和发展规律的科学。</span>
+<span>语音和文字是语言的两个基本属性。</span></p><h4 id='定义1-2语音学phonetics'><span>定义1-2：语音学(phonetics)</span></h4><p><span>研究人类发音特点，特别是语音发音特点，并提出各种语音描述、分类和转写方法的科学。</span></p><h4 id='定义1-3计算语言学computational-linguistics'><span>定义1-3：计算语言学(Computational Linguistics)</span></h4><p><span>通过建立形式化的计算模型来分析、理解和生成自然语言的学科，是人工智能和语言学的分支学科。</span></p><h4 id='定义1-4自然语言理解natural-language-understanding-nlu'><span>定义1-4：自然语言理解(Natural Language Understanding, NLU)</span></h4><p><span>自然语言理解是探索人类自身语言能力和语言思维活动的本质，研究模仿人类语言认知过程的自然语言处理方法和实现技术的一门学科。</span></p><h4 id='定义1-5-自然语言处理natural-language-processing-nlp'><span>定义1-5: 自然语言处理(Natural Language Processing, NLP)</span></h4><p><span>自然语言处理是研究如何利用计算机技术对语言文本(句子、篇章或话语等)进行处理和加工的一门学科，研究内容包括对词法、句法、语义和语用等信息的识别、分类、提取、转换和生成等各种处理方法和实现技术。</span></p><h4 id='定义1-6中文信息处理chinese-information-processing'><span>定义1-6：中文信息处理(Chinese Information Processing)</span></h4><p><span>针对中文的自然语言处理技术。</span></p><h4 id='三个不同的语系'><span>三个不同的语系</span></h4><ul><li><span>屈折语(fusional language/ inflectional language): 用词的形态变化表示语法关系，如英语、法语等。</span></li><li><span>黏着语(agglutinative language): 词内有专门表示语法意义的附加成分，词根或词干与附加成分的结合不紧密，如日语、韩语、土耳其语等。</span></li><li><span>孤立语(analytic language)(分析语, isolating language): 形态变化少，语法关系靠词序和虚词表示，如汉语。</span></li><li></li></ul><p>&nbsp;</p><h4 id='hlt的产生与发展'><span>HLT的产生与发展</span></h4><p><span>曲折的发展历程：</span></p><ul><li><span>1960S 中期之前：萌芽期</span></li><li><span>1960S 中期到1970S 中后期：步履维艰</span></li><li><span>1970S 中后期到1980S 后期：复苏</span></li><li><span>1980S至2010左右：快速发展</span></li><li><span>2010至今：繁荣时期</span></li></ul><p><strong><span>信息检索</span></strong><span>(Information retrieval)</span>
+<span>信息检索也称情报检索，就是利用计算机系统从大量文档中找到符合用户需要的相关信息。</span></p><p><strong><span>自动文摘</span></strong><span> (Automatic summarization / Automatic abstracting)</span>
+<span>将原文档的主要内容或某方面的信息自动提取出来，并形成原文档的摘要或缩写。</span></p><p><strong><span>问答系统</span></strong><span> (Question-answering system)</span></p><p><span>通过计算机系统对人提出的问题的理解，利用自动推理等手段，在有关知识资源中自动求解答案并做出相应的回答。</span></p><p><strong><span>信息过滤</span></strong><span>(Information filtering)</span>
+<span>通过计算机系统自动识别和过滤那些满足特定条件的文档信息。</span></p><p><strong><span>信息抽取</span></strong><span>(Information extraction)</span>
+<span>从指定文档中或者海量文本中抽取出用户感兴趣的信息。</span></p><p><strong><span>文档分类</span></strong><span>(Document categorization)</span>
+<span>文档分类也叫文本自动分类(Text categorization / classification) 或信息分类(Information categorization / classification)，其目的就是利用计算机系统对大量的文档按照一定的分类标准(例如，根据主题或内容划分等)实现自动归类。如情感分类(Sentimental classification)</span></p><p><strong><span>文字编辑和自动校对</span></strong><span>(Automatic proofreading)</span>
+<span>对文字拼写、用词、甚至语法、文档格式等进行自动检查、校对和编排。</span>
+<span>应用：排版、印刷和书籍编撰等。</span></p><p><strong><span>语言教学</span></strong><span>(Language teaching)</span></p><p><strong><span>文字识别</span></strong><span>(Character recognition)</span></p><p><strong><span>语音识别</span></strong><span> (automatic speech recognition, ASR)</span>
+<span>将输入语音信号自动转换成书面文字。</span></p><h3 id='基本问题和主要困难'><span>基本问题和主要困难</span></h3><h4 id='基本问题之一形态学morphology-问题'><span>基本问题之一：形态学(Morphology) 问题</span></h4><p><span>研究词(word) 由有意义的基本单位－词素(morphemes)的构成问题。</span></p><h4 id='基本问题之二句法syntax-问题'><span>基本问题之二：句法(Syntax) 问题</span></h4><p><span>研究句子结构成分之间的相互关系和组成句子序列的规则 。</span></p><h4 id='基本问题之三语义semantics-问题'><span>基本问题之三：语义(Semantics) 问题</span></h4><p><span>研究如何从一个语句中词的意义，以及这些词在该语句中句法结构中的作用来推导出该语句的意义。</span></p><h4 id='基本问题之四语用学pragmatics-问题'><span>基本问题之四：语用学(Pragmatics) 问题</span></h4><p><span>研究在不同上下文中语句的应用，以及上下文对语句理解所产生的影响。语用学最宽泛的定义是研究语义学未</span>
+<span>能涵盖的那些意义。</span></p><h4 id='基本问题之五语音学phonetics-问题'><span>基本问题之五：语音学(Phonetics) 问题</span></h4><p><span>研究语音特性、语音描述、分类及转写方法等</span></p><h4 id='困难之一大量歧义ambiguity现象'><span>困难之一：大量歧义(ambiguity)现象</span></h4><ul><li><span>词法歧义</span></li><li><span>词性歧义</span></li><li><span>结构歧义</span></li><li><span>语义歧义</span></li><li><span>语音歧义</span></li><li><span>多音字及韵律等歧义</span></li></ul><h4 id='困难之二大量未知语言现象'><span>困难之二：大量未知语言现象</span></h4><p><strong><span>归纳起来，NLU 所面临的挑战：</span></strong></p><ul><li><span>普遍存在的不确定性：词法、句法、语义、语用</span>
+<span>和语音各个层面</span></li><li><span>未知语言现象的不可预测性：新的词汇、新的术</span>
+<span>语、新的语义和语法无处不在 </span></li><li><span>始终面临的数据不充分性：有限的语言集合永远</span>
+<span>无法涵盖开放的语言现象</span></li><li><span>语言知识表达的复杂性：语义知识的模糊性和错</span>
+<span>综复杂的关联性难以用常规方法有效地描述，为</span>
+<span>语义计算带来了极大的困难</span></li><li><span>机器翻译中映射单元的不对等性：词法表达不相同、</span>
+<span>句法结构不一致、语义概念不对等</span></li></ul><h3 id='基本研究方法'><span>基本研究方法</span></h3><p><span>基于规则的分析方法建立符号处理系统</span></p><ul><li><span>知识库＋推理系统 →NLP 系统</span></li><li><span>理论基础：Chomsky 的文法理论</span></li></ul><p><span>基于大规模真实语料(语言数据)建立计算方法</span></p><ul><li><span>语料库 ＋ 统计模型 →NLP 系统</span></li><li><span>理论基础：统计学、信息论、机器学习</span></li></ul><p>&nbsp;</p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629195606.png" alt="image-20210629195559667" style="zoom:50%;" /></p><p>&nbsp;</p><p>&nbsp;</p><h2 id='数学基础'><span>数学基础</span></h2><h3 id='概率论基础'><span>概率论基础</span></h3><h4 id='基本概念-2'><span>基本概念</span></h4><p><span>⚫概率(probability)</span>
+<span>⚫最大似然估计(maximum likelihood estimation)</span>
+<span>⚫条件概率(conditional probability)</span>
+<span>⚫全概率公式(full probability)</span>
+<span>⚫贝叶斯决策理论(Bayesian decision theory)</span>
+<span>⚫贝叶斯法则(Bayes’ theorem) </span>
+<span>⚫二项式分布(binomial distribution)</span>
+<span>⚫期望(expectation)</span>
+<span>⚫方差(variance)</span></p><h4 id='信息论基础'><span>信息论基础</span></h4><p><strong><span>熵(entropy)</span></strong></p><p><span>如果 X 是一个离散型随机变量，其概率分布为： p(x) = p(X = x)，事件x  X。那么事件x的信息量I(x)定义为：</span>
+<span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="17.494ex" height="2.577ex" viewBox="0 -806.1 7532.1 1109.7" role="img" focusable="false" style="vertical-align: -0.705ex;"><defs><path stroke-width="0" id="E12-MJMATHI-49" d="M43 1Q26 1 26 10Q26 12 29 24Q34 43 39 45Q42 46 54 46H60Q120 46 136 53Q137 53 138 54Q143 56 149 77T198 273Q210 318 216 344Q286 624 286 626Q284 630 284 631Q274 637 213 637H193Q184 643 189 662Q193 677 195 680T209 683H213Q285 681 359 681Q481 681 487 683H497Q504 676 504 672T501 655T494 639Q491 637 471 637Q440 637 407 634Q393 631 388 623Q381 609 337 432Q326 385 315 341Q245 65 245 59Q245 52 255 50T307 46H339Q345 38 345 37T342 19Q338 6 332 0H316Q279 2 179 2Q143 2 113 2T65 2T43 1Z"></path><path stroke-width="0" id="E12-MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path stroke-width="0" id="E12-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E12-MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path stroke-width="0" id="E12-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E12-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E12-MJMATHI-6C" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path><path stroke-width="0" id="E12-MJMATHI-6F" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path><path stroke-width="0" id="E12-MJMATHI-67" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"></path><path stroke-width="0" id="E12-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E12-MJMATHI-70" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E12-MJMATHI-49" x="0" y="0"></use><use xlink:href="#E12-MJMAIN-28" x="504" y="0"></use><use xlink:href="#E12-MJMATHI-78" x="893" y="0"></use><use xlink:href="#E12-MJMAIN-29" x="1465" y="0"></use><use xlink:href="#E12-MJMAIN-3D" x="2131" y="0"></use><use xlink:href="#E12-MJMAIN-2212" x="3187" y="0"></use><use xlink:href="#E12-MJMATHI-6C" x="3965" y="0"></use><use xlink:href="#E12-MJMATHI-6F" x="4263" y="0"></use><g transform="translate(4748,0)"><use xlink:href="#E12-MJMATHI-67" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E12-MJMAIN-32" x="674" y="-213"></use></g><use xlink:href="#E12-MJMATHI-70" x="5679" y="0"></use><use xlink:href="#E12-MJMAIN-28" x="6182" y="0"></use><use xlink:href="#E12-MJMATHI-78" x="6571" y="0"></use><use xlink:href="#E12-MJMAIN-29" x="7143" y="0"></use></g></svg></span><script type="math/tex">I(x) = -log_2p(x)</script></p><p><span>X 的熵表示所有事件信息量的期望：</span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="48.446ex" height="2.811ex" viewBox="0 -806.1 20858.8 1210.2" role="img" focusable="false" style="vertical-align: -0.938ex;"><defs><path stroke-width="0" id="E13-MJMATHI-48" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 219 683Q260 681 355 681Q389 681 418 681T463 682T483 682Q499 682 499 672Q499 670 497 658Q492 641 487 638H485Q483 638 480 638T473 638T464 637T455 637Q416 636 405 634T387 623Q384 619 355 500Q348 474 340 442T328 395L324 380Q324 378 469 378H614L615 381Q615 384 646 504Q674 619 674 627T617 637Q594 637 587 639T580 648Q580 650 582 660Q586 677 588 679T604 682Q609 682 646 681T740 680Q802 680 835 681T871 682Q888 682 888 672Q888 645 876 638H874Q872 638 869 638T862 638T853 637T844 637Q805 636 794 634T776 623Q773 618 704 340T634 58Q634 51 638 51Q646 48 692 46H723Q729 38 729 37T726 19Q722 6 716 0H701Q664 2 567 2Q533 2 504 2T458 2T437 1Q420 1 420 10Q420 15 423 24Q428 43 433 45Q437 46 448 46H454Q481 46 514 49Q520 50 522 50T528 55T534 64T540 82T547 110T558 153Q565 181 569 198Q602 330 602 331T457 332H312L279 197Q245 63 245 58Q245 51 253 49T303 46H334Q340 38 340 37T337 19Q333 6 327 0H312Q275 2 178 2Q144 2 115 2T69 2T48 1Q31 1 31 10Q31 12 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path><path stroke-width="0" id="E13-MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path stroke-width="0" id="E13-MJMATHI-58" d="M42 0H40Q26 0 26 11Q26 15 29 27Q33 41 36 43T55 46Q141 49 190 98Q200 108 306 224T411 342Q302 620 297 625Q288 636 234 637H206Q200 643 200 645T202 664Q206 677 212 683H226Q260 681 347 681Q380 681 408 681T453 682T473 682Q490 682 490 671Q490 670 488 658Q484 643 481 640T465 637Q434 634 411 620L488 426L541 485Q646 598 646 610Q646 628 622 635Q617 635 609 637Q594 637 594 648Q594 650 596 664Q600 677 606 683H618Q619 683 643 683T697 681T738 680Q828 680 837 683H845Q852 676 852 672Q850 647 840 637H824Q790 636 763 628T722 611T698 593L687 584Q687 585 592 480L505 384Q505 383 536 304T601 142T638 56Q648 47 699 46Q734 46 734 37Q734 35 732 23Q728 7 725 4T711 1Q708 1 678 1T589 2Q528 2 496 2T461 1Q444 1 444 10Q444 11 446 25Q448 35 450 39T455 44T464 46T480 47T506 54Q523 62 523 64Q522 64 476 181L429 299Q241 95 236 84Q232 76 232 72Q232 53 261 47Q262 47 267 47T273 46Q276 46 277 46T280 45T283 42T284 35Q284 26 282 19Q279 6 276 4T261 1Q258 1 243 1T201 2T142 2Q64 2 42 0Z"></path><path stroke-width="0" id="E13-MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path stroke-width="0" id="E13-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E13-MJSZ1-2211" d="M61 748Q64 750 489 750H913L954 640Q965 609 976 579T993 533T999 516H979L959 517Q936 579 886 621T777 682Q724 700 655 705T436 710H319Q183 710 183 709Q186 706 348 484T511 259Q517 250 513 244L490 216Q466 188 420 134T330 27L149 -187Q149 -188 362 -188Q388 -188 436 -188T506 -189Q679 -189 778 -162T936 -43Q946 -27 959 6H999L913 -249L489 -250Q65 -250 62 -248Q56 -246 56 -239Q56 -234 118 -161Q186 -81 245 -11L428 206Q428 207 242 462L57 717L56 728Q56 744 61 748Z"></path><path stroke-width="0" id="E13-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E13-MJMAIN-2208" d="M84 250Q84 372 166 450T360 539Q361 539 377 539T419 540T469 540H568Q583 532 583 520Q583 511 570 501L466 500Q355 499 329 494Q280 482 242 458T183 409T147 354T129 306T124 272V270H568Q583 262 583 250T568 230H124V228Q124 207 134 177T167 112T231 48T328 7Q355 1 466 0H570Q583 -10 583 -20Q583 -32 568 -40H471Q464 -40 446 -40T417 -41Q262 -41 172 45Q84 127 84 250Z"></path><path stroke-width="0" id="E13-MJMATHI-70" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path><path stroke-width="0" id="E13-MJMATHI-49" d="M43 1Q26 1 26 10Q26 12 29 24Q34 43 39 45Q42 46 54 46H60Q120 46 136 53Q137 53 138 54Q143 56 149 77T198 273Q210 318 216 344Q286 624 286 626Q284 630 284 631Q274 637 213 637H193Q184 643 189 662Q193 677 195 680T209 683H213Q285 681 359 681Q481 681 487 683H497Q504 676 504 672T501 655T494 639Q491 637 471 637Q440 637 407 634Q393 631 388 623Q381 609 337 432Q326 385 315 341Q245 65 245 59Q245 52 255 50T307 46H339Q345 38 345 37T342 19Q338 6 332 0H316Q279 2 179 2Q143 2 113 2T65 2T43 1Z"></path><path stroke-width="0" id="E13-MJMAIN-2212" d="M84 237T84 250T98 270H679Q694 262 694 250T679 230H98Q84 237 84 250Z"></path><path stroke-width="0" id="E13-MJMATHI-6C" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path><path stroke-width="0" id="E13-MJMATHI-6F" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path><path stroke-width="0" id="E13-MJMATHI-67" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"></path><path stroke-width="0" id="E13-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E13-MJMATHI-48" x="0" y="0"></use><use xlink:href="#E13-MJMAIN-28" x="888" y="0"></use><use xlink:href="#E13-MJMATHI-58" x="1277" y="0"></use><use xlink:href="#E13-MJMAIN-29" x="2129" y="0"></use><use xlink:href="#E13-MJMAIN-3D" x="2795" y="0"></use><g transform="translate(3851,0)"><use xlink:href="#E13-MJSZ1-2211" x="0" y="0"></use><g transform="translate(1056,-286)"><use transform="scale(0.707)" xlink:href="#E13-MJMATHI-78" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E13-MJMAIN-2208" x="572" y="0"></use><use transform="scale(0.707)" xlink:href="#E13-MJMATHI-58" x="1239" y="0"></use></g></g><use xlink:href="#E13-MJMATHI-70" x="6652" y="0"></use><use xlink:href="#E13-MJMAIN-28" x="7155" y="0"></use><use xlink:href="#E13-MJMATHI-78" x="7544" y="0"></use><use xlink:href="#E13-MJMAIN-29" x="8116" y="0"></use><use xlink:href="#E13-MJMATHI-49" x="8505" y="0"></use><use xlink:href="#E13-MJMAIN-28" x="9009" y="0"></use><use xlink:href="#E13-MJMATHI-78" x="9398" y="0"></use><use xlink:href="#E13-MJMAIN-29" x="9970" y="0"></use><use xlink:href="#E13-MJMAIN-3D" x="10637" y="0"></use><use xlink:href="#E13-MJMAIN-2212" x="11693" y="0"></use><g transform="translate(12638,0)"><use xlink:href="#E13-MJSZ1-2211" x="0" y="0"></use><g transform="translate(1056,-286)"><use transform="scale(0.707)" xlink:href="#E13-MJMATHI-78" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E13-MJMAIN-2208" x="572" y="0"></use><use transform="scale(0.707)" xlink:href="#E13-MJMATHI-58" x="1239" y="0"></use></g></g><use xlink:href="#E13-MJMATHI-70" x="15439" y="0"></use><use xlink:href="#E13-MJMAIN-28" x="15942" y="0"></use><use xlink:href="#E13-MJMATHI-78" x="16331" y="0"></use><use xlink:href="#E13-MJMAIN-29" x="16903" y="0"></use><use xlink:href="#E13-MJMATHI-6C" x="17292" y="0"></use><use xlink:href="#E13-MJMATHI-6F" x="17590" y="0"></use><g transform="translate(18075,0)"><use xlink:href="#E13-MJMATHI-67" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E13-MJMAIN-32" x="674" y="-213"></use></g><use xlink:href="#E13-MJMATHI-70" x="19005" y="0"></use><use xlink:href="#E13-MJMAIN-28" x="19508" y="0"></use><use xlink:href="#E13-MJMATHI-78" x="19897" y="0"></use><use xlink:href="#E13-MJMAIN-29" x="20469" y="0"></use></g></svg></span><script type="math/tex">H(X)=\sum_{x\in X}p(x)I(x)=-\sum_{x\in X}p(x)log_2p(x)</script><span>,其中   </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="9.515ex" height="2.461ex" viewBox="0 -755.9 4096.6 1059.4" role="img" focusable="false" style="vertical-align: -0.705ex;"><defs><path stroke-width="0" id="E14-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path><path stroke-width="0" id="E14-MJMATHI-6C" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"></path><path stroke-width="0" id="E14-MJMATHI-6F" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"></path><path stroke-width="0" id="E14-MJMATHI-67" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"></path><path stroke-width="0" id="E14-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E14-MJMAIN-30" x="0" y="0"></use><use xlink:href="#E14-MJMATHI-6C" x="500" y="0"></use><use xlink:href="#E14-MJMATHI-6F" x="798" y="0"></use><use xlink:href="#E14-MJMATHI-67" x="1283" y="0"></use><use xlink:href="#E14-MJMAIN-30" x="1763" y="0"></use><use xlink:href="#E14-MJMAIN-3D" x="2540" y="0"></use><use xlink:href="#E14-MJMAIN-30" x="3596" y="0"></use></g></svg></span><script type="math/tex">0log0=0</script></p><p><strong><span>熵又称为自信息(self-information)</span></strong><span>，表示信源 X 每发一个符号(不论发什么符号)所提供的平均信息量。</span></p><p><span>熵也可以被视为描述一个随机变量的不确定性的量。一个随机变量的熵越大，它的不确定性越大。那么，正确估计其值的可能性就越小。</span></p><p><strong><span>联合熵(joint entropy)</span></strong>
+<span>如果X, Y 是一对离散型随机变量X, Y ~ p(x, y)，X, Y 的联合熵 H(X, Y) 为：</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629200125.png" alt="image-20210629200125629" style="zoom:50%;" /></p><p><span>联合熵实际上就是描述一对随机变量平均所需要的信息量。</span></p><p><strong><span>条件熵(conditional entropy)</span></strong>
+<span>给定随机变量 X 的情况下，随机变量 Y 的条件熵定义为：</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629200221.png" alt="image-20210629200221954" style="zoom: 50%;" /></p><p><span>例题：</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629200252.png" alt="image-20210629200251976" style="zoom: 45%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629200322.png" alt="image-20210629200322351" style="zoom: 45%;" />
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629200340.png" alt="image-20210629200339966" style="zoom: 45%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629200354.png" alt="image-20210629200354374" style="zoom: 45%;" />
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629200422.png" alt="image-20210629200422433" style="zoom:45%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629200433.png" alt="image-20210629200433777" style="zoom: 45%;" /></p><p><span>一般地，对于一条长度为 n 的信息，每一个字符或字的熵为：</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629200458.png" alt="image-20210629200458477" style="zoom:50%;" /></p><p><span>这个数值我们也称为 熵率(entropy rate)。其中，变量</span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="3.962ex" height="2.344ex" viewBox="0 -755.9 1705.8 1009.2" role="img" focusable="false" style="vertical-align: -0.588ex;"><defs><path stroke-width="0" id="E15-MJMATHI-58" d="M42 0H40Q26 0 26 11Q26 15 29 27Q33 41 36 43T55 46Q141 49 190 98Q200 108 306 224T411 342Q302 620 297 625Q288 636 234 637H206Q200 643 200 645T202 664Q206 677 212 683H226Q260 681 347 681Q380 681 408 681T453 682T473 682Q490 682 490 671Q490 670 488 658Q484 643 481 640T465 637Q434 634 411 620L488 426L541 485Q646 598 646 610Q646 628 622 635Q617 635 609 637Q594 637 594 648Q594 650 596 664Q600 677 606 683H618Q619 683 643 683T697 681T738 680Q828 680 837 683H845Q852 676 852 672Q850 647 840 637H824Q790 636 763 628T722 611T698 593L687 584Q687 585 592 480L505 384Q505 383 536 304T601 142T638 56Q648 47 699 46Q734 46 734 37Q734 35 732 23Q728 7 725 4T711 1Q708 1 678 1T589 2Q528 2 496 2T461 1Q444 1 444 10Q444 11 446 25Q448 35 450 39T455 44T464 46T480 47T506 54Q523 62 523 64Q522 64 476 181L429 299Q241 95 236 84Q232 76 232 72Q232 53 261 47Q262 47 267 47T273 46Q276 46 277 46T280 45T283 42T284 35Q284 26 282 19Q279 6 276 4T261 1Q258 1 243 1T201 2T142 2Q64 2 42 0Z"></path><path stroke-width="0" id="E15-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E15-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E15-MJMATHI-58" x="0" y="0"></use><g transform="translate(828,-150)"><use transform="scale(0.707)" xlink:href="#E15-MJMAIN-31" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E15-MJMATHI-6E" x="500" y="0"></use></g></g></svg></span><script type="math/tex"> X_{1n}</script><span>表示随机变量序列</span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="33.341ex" height="2.577ex" viewBox="0 -806.1 14355.2 1109.7" role="img" focusable="false" style="vertical-align: -0.705ex;"><defs><path stroke-width="0" id="E16-MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path stroke-width="0" id="E16-MJMATHI-58" d="M42 0H40Q26 0 26 11Q26 15 29 27Q33 41 36 43T55 46Q141 49 190 98Q200 108 306 224T411 342Q302 620 297 625Q288 636 234 637H206Q200 643 200 645T202 664Q206 677 212 683H226Q260 681 347 681Q380 681 408 681T453 682T473 682Q490 682 490 671Q490 670 488 658Q484 643 481 640T465 637Q434 634 411 620L488 426L541 485Q646 598 646 610Q646 628 622 635Q617 635 609 637Q594 637 594 648Q594 650 596 664Q600 677 606 683H618Q619 683 643 683T697 681T738 680Q828 680 837 683H845Q852 676 852 672Q850 647 840 637H824Q790 636 763 628T722 611T698 593L687 584Q687 585 592 480L505 384Q505 383 536 304T601 142T638 56Q648 47 699 46Q734 46 734 37Q734 35 732 23Q728 7 725 4T711 1Q708 1 678 1T589 2Q528 2 496 2T461 1Q444 1 444 10Q444 11 446 25Q448 35 450 39T455 44T464 46T480 47T506 54Q523 62 523 64Q522 64 476 181L429 299Q241 95 236 84Q232 76 232 72Q232 53 261 47Q262 47 267 47T273 46Q276 46 277 46T280 45T283 42T284 35Q284 26 282 19Q279 6 276 4T261 1Q258 1 243 1T201 2T142 2Q64 2 42 0Z"></path><path stroke-width="0" id="E16-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E16-MJMAIN-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path><path stroke-width="0" id="E16-MJMAIN-2026" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60ZM525 60Q525 84 542 102T585 120Q609 120 627 104T646 61Q646 36 629 18T586 0T543 17T525 60ZM972 60Q972 84 989 102T1032 120Q1056 120 1074 104T1093 61Q1093 36 1076 18T1033 0T990 17T972 60Z"></path><path stroke-width="0" id="E16-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E16-MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path stroke-width="0" id="E16-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E16-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E16-MJMAIN-28" x="0" y="0"></use><g transform="translate(389,0)"><use xlink:href="#E16-MJMATHI-58" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E16-MJMAIN-31" x="1170" y="-213"></use></g><use xlink:href="#E16-MJMAIN-2C" x="1670" y="0"></use><use xlink:href="#E16-MJMAIN-2026" x="2115" y="0"></use><use xlink:href="#E16-MJMAIN-2C" x="3453" y="0"></use><g transform="translate(3898,0)"><use xlink:href="#E16-MJMATHI-58" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E16-MJMATHI-6E" x="1170" y="-213"></use></g><use xlink:href="#E16-MJMAIN-29" x="5250" y="0"></use><g transform="translate(5639,0)"><text font-family="STIXGeneral, 'PingFang SC', serif" stroke="none" transform="scale(50.259) matrix(1 0 0 -1 0 0)">，</text></g><g transform="translate(6443,0)"><use xlink:href="#E16-MJMATHI-78" x="0" y="0"></use><g transform="translate(572,-150)"><use transform="scale(0.707)" xlink:href="#E16-MJMAIN-31" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E16-MJMATHI-6E" x="500" y="0"></use></g></g><use xlink:href="#E16-MJMAIN-3D" x="8171" y="0"></use><use xlink:href="#E16-MJMAIN-28" x="9227" y="0"></use><g transform="translate(9616,0)"><use xlink:href="#E16-MJMATHI-78" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E16-MJMAIN-31" x="808" y="-213"></use></g><use xlink:href="#E16-MJMAIN-2C" x="10641" y="0"></use><use xlink:href="#E16-MJMAIN-2026" x="11086" y="0"></use><use xlink:href="#E16-MJMAIN-2C" x="12425" y="0"></use><g transform="translate(12869,0)"><use xlink:href="#E16-MJMATHI-78" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E16-MJMATHI-6E" x="808" y="-213"></use></g><use xlink:href="#E16-MJMAIN-29" x="13966" y="0"></use></g></svg></span><script type="math/tex"> (X_1, …, X_n)，x_{1n}= (x_1, …, x_n)</script><span>表示随机变量的具体取值。有时将 </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="3.367ex" height="1.76ex" viewBox="0 -504.6 1449.8 757.9" role="img" focusable="false" style="vertical-align: -0.588ex;"><defs><path stroke-width="0" id="E17-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E17-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path><path stroke-width="0" id="E17-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E17-MJMATHI-78" x="0" y="0"></use><g transform="translate(572,-150)"><use transform="scale(0.707)" xlink:href="#E17-MJMAIN-31" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E17-MJMATHI-6E" x="500" y="0"></use></g></g></svg></span><script type="math/tex">x_{1n}</script><span>写成 </span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="2.546ex" height="2.694ex" viewBox="0 -755.9 1096.3 1160" role="img" focusable="false" style="vertical-align: -0.938ex;"><defs><path stroke-width="0" id="E18-MJMATHI-78" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"></path><path stroke-width="0" id="E18-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path><path stroke-width="0" id="E18-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E18-MJMATHI-78" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E18-MJMATHI-6E" x="808" y="498"></use><use transform="scale(0.707)" xlink:href="#E18-MJMAIN-31" x="808" y="-434"></use></g></svg></span><script type="math/tex">x_1^n</script><span> 。</span></p><p><span>相对熵(relative entropy, 或称Kullback-Leibler divergence, KL 距离)</span></p><p><span>两个概率分布p(x) 和 q(x) 的相对熵定义为：</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629200727.png" alt="image-20210629200727460" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629200804.png" alt="image-20210629200804199" style="zoom:50%;" /></p><p><span>相对熵常被用以衡量两个随机分布的差距。当两个随机分布相同时，其相对熵为0。当两个随机分布的差别增加时，其相对熵也增加。</span></p><p><span>交叉熵(cross entropy)</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629200834.png" alt="image-20210629200834898" style="zoom: 50%;" /></p><p><span>交叉熵(cross entropy)</span>
+<span>如果一个随机变量 X ~ p(x)，q(x)为用于近似 p(x) 的概率分布，那么，随机变量 X 和模型 q 之间的交叉熵H(X,q)(或写为H(p,q))定义为：</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629200921.png" alt="image-20210629200921228" style="zoom: 45%;" /></p><p><span>由此，我们可以根据模型 q 和一个含有大量数据的 L 的样本来计算交叉熵。在设计模型 q 时，我们的目的是使交叉熵最小，从而使模型最接近真实的概率分布 p(x)。</span></p><p><span>困惑度(perplexity)</span>
+<span>在设计语言模型时，我们通常用困惑度来代替交叉熵衡量语言模型的好坏。给定语言L的样本</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629201009.png" alt="image-20210629201009822" style="zoom: 45%;" /></p><p><span>语言模型设计的任务就是寻找困惑度最小的模型，使其最接近真实的语言。</span></p><p><span>互信息(mutual information)</span>
+<span>如果(X, Y) ~ p(x, y)，X, Y 之间的互信息 I(X; Y) 定义为：</span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="26.521ex" height="2.577ex" viewBox="0 -806.1 11418.9 1109.7" role="img" focusable="false" style="vertical-align: -0.705ex;"><defs><path stroke-width="0" id="E19-MJMATHI-49" d="M43 1Q26 1 26 10Q26 12 29 24Q34 43 39 45Q42 46 54 46H60Q120 46 136 53Q137 53 138 54Q143 56 149 77T198 273Q210 318 216 344Q286 624 286 626Q284 630 284 631Q274 637 213 637H193Q184 643 189 662Q193 677 195 680T209 683H213Q285 681 359 681Q481 681 487 683H497Q504 676 504 672T501 655T494 639Q491 637 471 637Q440 637 407 634Q393 631 388 623Q381 609 337 432Q326 385 315 341Q245 65 245 59Q245 52 255 50T307 46H339Q345 38 345 37T342 19Q338 6 332 0H316Q279 2 179 2Q143 2 113 2T65 2T43 1Z"></path><path stroke-width="0" id="E19-MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path stroke-width="0" id="E19-MJMATHI-58" d="M42 0H40Q26 0 26 11Q26 15 29 27Q33 41 36 43T55 46Q141 49 190 98Q200 108 306 224T411 342Q302 620 297 625Q288 636 234 637H206Q200 643 200 645T202 664Q206 677 212 683H226Q260 681 347 681Q380 681 408 681T453 682T473 682Q490 682 490 671Q490 670 488 658Q484 643 481 640T465 637Q434 634 411 620L488 426L541 485Q646 598 646 610Q646 628 622 635Q617 635 609 637Q594 637 594 648Q594 650 596 664Q600 677 606 683H618Q619 683 643 683T697 681T738 680Q828 680 837 683H845Q852 676 852 672Q850 647 840 637H824Q790 636 763 628T722 611T698 593L687 584Q687 585 592 480L505 384Q505 383 536 304T601 142T638 56Q648 47 699 46Q734 46 734 37Q734 35 732 23Q728 7 725 4T711 1Q708 1 678 1T589 2Q528 2 496 2T461 1Q444 1 444 10Q444 11 446 25Q448 35 450 39T455 44T464 46T480 47T506 54Q523 62 523 64Q522 64 476 181L429 299Q241 95 236 84Q232 76 232 72Q232 53 261 47Q262 47 267 47T273 46Q276 46 277 46T280 45T283 42T284 35Q284 26 282 19Q279 6 276 4T261 1Q258 1 243 1T201 2T142 2Q64 2 42 0Z"></path><path stroke-width="0" id="E19-MJMAIN-3B" d="M78 370Q78 394 95 412T138 430Q162 430 180 414T199 371Q199 346 182 328T139 310T96 327T78 370ZM78 60Q78 85 94 103T137 121Q202 121 202 8Q202 -44 183 -94T144 -169T118 -194Q115 -194 106 -186T95 -174Q94 -171 107 -155T137 -107T160 -38Q161 -32 162 -22T165 -4T165 4Q165 5 161 4T142 0Q110 0 94 18T78 60Z"></path><path stroke-width="0" id="E19-MJMATHI-59" d="M66 637Q54 637 49 637T39 638T32 641T30 647T33 664T42 682Q44 683 56 683Q104 680 165 680Q288 680 306 683H316Q322 677 322 674T320 656Q316 643 310 637H298Q242 637 242 624Q242 619 292 477T343 333L346 336Q350 340 358 349T379 373T411 410T454 461Q546 568 561 587T577 618Q577 634 545 637Q528 637 528 647Q528 649 530 661Q533 676 535 679T549 683Q551 683 578 682T657 680Q684 680 713 681T746 682Q763 682 763 673Q763 669 760 657T755 643Q753 637 734 637Q662 632 617 587Q608 578 477 424L348 273L322 169Q295 62 295 57Q295 46 363 46Q379 46 384 45T390 35Q390 33 388 23Q384 6 382 4T366 1Q361 1 324 1T232 2Q170 2 138 2T102 1Q84 1 84 9Q84 14 87 24Q88 27 89 30T90 35T91 39T93 42T96 44T101 45T107 45T116 46T129 46Q168 47 180 50T198 63Q201 68 227 171L252 274L129 623Q128 624 127 625T125 627T122 629T118 631T113 633T105 634T96 635T83 636T66 637Z"></path><path stroke-width="0" id="E19-MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path><path stroke-width="0" id="E19-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path><path stroke-width="0" id="E19-MJMATHI-48" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 219 683Q260 681 355 681Q389 681 418 681T463 682T483 682Q499 682 499 672Q499 670 497 658Q492 641 487 638H485Q483 638 480 638T473 638T464 637T455 637Q416 636 405 634T387 623Q384 619 355 500Q348 474 340 442T328 395L324 380Q324 378 469 378H614L615 381Q615 384 646 504Q674 619 674 627T617 637Q594 637 587 639T580 648Q580 650 582 660Q586 677 588 679T604 682Q609 682 646 681T740 680Q802 680 835 681T871 682Q888 682 888 672Q888 645 876 638H874Q872 638 869 638T862 638T853 637T844 637Q805 636 794 634T776 623Q773 618 704 340T634 58Q634 51 638 51Q646 48 692 46H723Q729 38 729 37T726 19Q722 6 716 0H701Q664 2 567 2Q533 2 504 2T458 2T437 1Q420 1 420 10Q420 15 423 24Q428 43 433 45Q437 46 448 46H454Q481 46 514 49Q520 50 522 50T528 55T534 64T540 82T547 110T558 153Q565 181 569 198Q602 330 602 331T457 332H312L279 197Q245 63 245 58Q245 51 253 49T303 46H334Q340 38 340 37T337 19Q333 6 327 0H312Q275 2 178 2Q144 2 115 2T69 2T48 1Q31 1 31 10Q31 12 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path><path stroke-width="0" id="E19-MJMAIN-2013" d="M0 248V285H499V248H0Z"></path><path stroke-width="0" id="E19-MJMAIN-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E19-MJMATHI-49" x="0" y="0"></use><use xlink:href="#E19-MJMAIN-28" x="504" y="0"></use><use xlink:href="#E19-MJMATHI-58" x="893" y="0"></use><use xlink:href="#E19-MJMAIN-3B" x="1745" y="0"></use><use xlink:href="#E19-MJMATHI-59" x="2189" y="0"></use><use xlink:href="#E19-MJMAIN-29" x="2952" y="0"></use><use xlink:href="#E19-MJMAIN-3D" x="3619" y="0"></use><use xlink:href="#E19-MJMATHI-48" x="4675" y="0"></use><use xlink:href="#E19-MJMAIN-28" x="5563" y="0"></use><use xlink:href="#E19-MJMATHI-58" x="5952" y="0"></use><use xlink:href="#E19-MJMAIN-29" x="6804" y="0"></use><use xlink:href="#E19-MJMAIN-2013" x="7193" y="0"></use><use xlink:href="#E19-MJMATHI-48" x="7859" y="0"></use><use xlink:href="#E19-MJMAIN-28" x="8747" y="0"></use><use xlink:href="#E19-MJMATHI-58" x="9136" y="0"></use><use xlink:href="#E19-MJMAIN-7C" x="9988" y="0"></use><use xlink:href="#E19-MJMATHI-59" x="10266" y="0"></use><use xlink:href="#E19-MJMAIN-29" x="11029" y="0"></use></g></svg></span><script type="math/tex">I (X; Y) = H(X) – H(X | Y) </script></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629201058.png" alt="image-20210629201058466" style="zoom: 45%;" />
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629201114.png" alt="image-20210629201114552" style="zoom: 45%;" /></p><p><span>两个单个离散事件(xi, yj)之间的互信息I(xi, yj)可能为负值，但两个随机变量(X, Y)之间的互信息I(X, Y)不可能为负值。后者通常称为平均互信息。</span></p><p><span>噪声信道模型(noisy channel model)</span></p><p><span>噪声信道模型的目标就是优化噪声信道中信号传输的吞吐量和准确率，其基本假设是一个信道的输出以一定的概率依赖于输入。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629201214.png" alt="image-20210629201214510" style="zoom: 45%;" /></p><p><span>信息论中很重要的一个概念就是信道容量(capacity)，</span>
+<span>其基本思想是用降低传输速率来换取高保真通讯的可能</span>
+<span>性。其定义可以根据互信息给出：</span>
+<img src="C:/Users/hsupengbo/AppData/Roaming/Typora/typora-user-images/image-20210629201242926.png" alt="image-20210629201242926" style="zoom:50%;" />
+<span>据此定义，如果我们能够设计一个输入编码 X，其概率分布为 p(X)，使其输入与输出之间的互信息达到最大值，那么，我们的设计就达到了信道的最大传输容量。在语言处理中，我们不需要进行编码，只需要进行解码，使系统的输出更接近于输入，如机器翻译。</span></p><p><span>词汇歧义消解</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629201340.png" alt="image-20210629201340521" style="zoom: 45%;" />
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629201404.png" alt="image-20210629201403908" style="zoom: 45%;" /></p><h2 id='语言模型'><span>语言模型</span></h2><h3 id='n-元文法n-gram模型'><span>n 元文法(n-gram)模型</span></h3><p><span>通常地，</span>
+<span>❖当 n=1 时，即出现在第 i 位上的基元 wi 独立于历史。</span>
+<span>一元文法也被写为 uni-gram 或 monogram；</span>
+<span>❖当 n=2 时, 2-gram (bi-gram) 被称为1阶马尔可夫链；</span>
+<span>❖当 n=3 时, 3-gram(tri-gram)被称为2阶马尔可夫链，</span>
+<span>依次类推。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629201614.png" alt="image-20210629201614092" style="zoom: 45%;" /></p><p><span>例题:</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701095041.png" alt="image-20210701095041252" style="zoom: 45%;" /><span> </span><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701095104.png" alt="image-20210701095104181" style="zoom: 45%;" /></p><h4 id='应用-1音字转换问题'><span>应用-1：音字转换问题</span></h4><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629201639.png" alt="image-20210629201639469" style="zoom: 45%;" /></p><p><span>如果汉字的总数为：N</span>
+<span>➢一元语法：1)样本空间为 N</span>
+<span>2)只选择使用频率最高的汉字</span>
+<span>➢2元语法：1)样本空间为 N2</span>
+<span>2)效果比一元语法明显提高</span>
+<span>➢估计对汉字而言四元语法效果会好一些</span>
+<span>➢智能狂拼、微软拼音输入法基于 n-gram.</span></p><h4 id='应用-2汉语分词问题'><span>应用-2：汉语分词问题</span></h4><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629201711.png" alt="image-20210629201711112" style="zoom: 45%;" /></p><p><span>➢训练语料(training data)：用于建立模型，确定</span>
+<span>模型参数的已知语料。</span>
+<span>➢最大似然估计(maximum likelihood Evaluation, MLE)：</span>
+<span>用相对频率计算概率的方法。</span></p><h3 id='数据平滑'><span>数据平滑</span></h3><h4 id='基本思想'><span>基本思想：</span></h4><p><span>◆调整最大似然估计的概率值,使零概率增值，使非零概率下调，“劫富济贫”，消除零概率，改进模型的整体正确率。</span>
+<span>◆基本目标：测试样本的语言模型困惑度越小</span>
+<span>越好。</span></p><p><span>◆基本约束：</span><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629201843.png" alt="image-20210629201843388" style="zoom:50%;" /></p><h4 id='加1法additive-smoothing-'><span>加1法(Additive smoothing )</span></h4><p><span>基本思想: 每一种情况出现的次数加1。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629201935.png" alt="image-20210629201935520" style="zoom: 45%;" /></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701095333.png" alt="image-20210701095333810" style="zoom:45%;" /><span> </span><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701095431.png" alt="image-20210701095431277" style="zoom:45%;" /></p><h4 id='减值法折扣法discounting'><span>减值法/折扣法(Discounting)</span></h4><p><span>基本思想：修改训练样本中事件的实际计数，使样本中(实际出现的)不同事件的概率之和小于1，剩余的概率量分配给未见概率。</span></p><h5 id='①good-turing-估计'><span>①Good-Turing 估计</span></h5><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629202031.png" alt="image-20210629202031502" style="zoom: 50%;" /></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629202044.png" alt="image-20210629202044836" style="zoom: 50%;" /></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701095553.png" alt="image-20210701095553644" style="zoom:30%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701095611.png" alt="image-20210701095611002" style="zoom: 30%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701095632.png" alt="image-20210701095632256" style="zoom: 30%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701095648.png" alt="image-20210701095648164" style="zoom:50%;" /></p><p>&nbsp;</p><p>&nbsp;</p><h5 id='②back-off-后备后退方法'><span>②Back-off (后备/后退)方法</span></h5><p><span>又称 Katz 后退法。</span>
+<span>基本思想：当某一事件在样本中出现的频率大于阈值K (通常取 K 为0 或1)时，运用最大似然估计的减值法来估计其概率，否则，使用低阶的，即 (n-1)gram 的概率替代 n-gram 概率，而这种替代需受归一化因子</span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.486ex" height="1.41ex" viewBox="0 -504.6 640 607.1" role="img" focusable="false" style="vertical-align: -0.238ex;"><defs><path stroke-width="0" id="E20-MJMATHI-3B1" d="M34 156Q34 270 120 356T309 442Q379 442 421 402T478 304Q484 275 485 237V208Q534 282 560 374Q564 388 566 390T582 393Q603 393 603 385Q603 376 594 346T558 261T497 161L486 147L487 123Q489 67 495 47T514 26Q528 28 540 37T557 60Q559 67 562 68T577 70Q597 70 597 62Q597 56 591 43Q579 19 556 5T512 -10H505Q438 -10 414 62L411 69L400 61Q390 53 370 41T325 18T267 -2T203 -11Q124 -11 79 39T34 156ZM208 26Q257 26 306 47T379 90L403 112Q401 255 396 290Q382 405 304 405Q235 405 183 332Q156 292 139 224T121 120Q121 71 146 49T208 26Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E20-MJMATHI-3B1" x="0" y="0"></use></g></svg></span><script type="math/tex">\alpha</script><span>的作用。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629202155.png" alt="image-20210629202155695" style="zoom: 50%;" /></p><h5 id='③绝对减值法-absolute-discounting-'><span>③绝对减值法 (Absolute discounting )</span></h5><p><span>基本思想：从每个计数 r 中减去同样的量，剩余的概率量由未见事件均分。设 R 为所有可能事件的数目(当事件为 n-gram 时，如果统计基元为词，且词汇集的大小为 L, 则 R=Ln )。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629202222.png" alt="image-20210629202222641" style="zoom:50%;" /></p><h5 id='④线性减值法-linear-discounting-'><span>④线性减值法 (Linear discounting )</span></h5><p><span>基本思想：从每个计数 r 中减去与该计数成正比的量(减值函数为线性的)，剩余概率量 被n0个未见事件均分。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629202252.png" alt="image-20210629202252901" style="zoom: 50%;" /></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629202306.png" alt="image-20210629202306163" style="zoom:50%;" /></p><p><span>绝对减值法产生的n-gram 通常优于线性减值法。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701095755.png" alt="image-20210701095755384" style="zoom:50%;" /></p><p><span>(3)删除插值法(Deleted interpolation)</span>
+<span>基本思想：用低阶语法估计高阶语法，即当 3-gram的值不能从训练数据中准确估计时，用 2-gram 来替代，同样，当 2-gram 的值不能从训练语料中准确估计时，可以用 1-gram 的值来代替。插值公式：</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629202407.png" alt="image-20210629202407548" style="zoom: 50%;" /></p><h3 id='语言模型的自适应方法'><span>语言模型的自适应方法：</span></h3><h4 id='1基于缓存的语言模型-cache-based-lm'><span>(1)基于缓存的语言模型 (cache-based LM)</span></h4><p><span>该方法针对的问题是：在文本中刚刚出现过的一些词在后边的句子中再次出现的可能性往往较大，比标准的n-gram模型预测的概率要大。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629202457.png" alt="image-20210629202457673" style="zoom: 50%;" /></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701095904.png" alt="image-20210701095904816" style="zoom:50%;" /></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701095925.png" alt="image-20210701095925398" style="zoom:50%;" /></p><p>&nbsp;</p><h4 id='2基于混合方法的语言模型'><span>(2)基于混合方法的语言模型</span></h4><p><strong><span>该方法针对的问题是</span></strong><span>：由于大规模训练语料本身是异源的(heterogenous)，来自不同领域的语料无论在主题(topic)方面,还是在风格(style)方面,或者两者都有一定的差异，而测试语料一般是同源的(homogeneous)，因此，为了获得最佳性能，语言模型必须适应各种不同类型的语料对其性能的影响。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629202545.png" alt="image-20210629202545407" style="zoom: 50%;" /></p><p><strong><span>基本方法</span></strong></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701100015.png" alt="image-20210701100014948" style="zoom:50%;" /></p><h4 id='3基于最大熵的语言模型'><span>(3)基于最大熵的语言模型</span></h4><p><span>基本思想：通过结合不同信息源的信息构建一个语言模型。每个信息源提供一组关于模型参数的约束条件，在所有满足约束的模型中，选择熵最大的模型。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629202637.png" alt="image-20210629202637230" style="zoom: 50%;" /></p><p><span>用线性插值方法通过取这两个概率估计的平均值，并采用后备(backing-off) 平滑技术来解决这个问题。</span></p><p><span>最大熵原则将所有的信息源组合成一个模型，对于该模型的约束并不是让公式(5-18)和(5-19)对于所有可能的历史都成立，而是更宽松的限制，即它们在训练数据上平均成立即可，因此，公式(5-18)和(5-19)被分别改写成：</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629202655.png" alt="image-20210629202655554" style="zoom: 50%;" /></p><p><span>如果约束条件是一致的(相互之间不矛盾)，那么，总有模型满足这些条件，余下的问题就是利用通用迭代算法 (generalized iterative scaling, GIS) 选择使熵最大的模型。</span></p><h3 id='应用到汉语分词'><span>应用到汉语分词</span></h3><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701100217.png" alt="image-20210701100216954" style="zoom:45%;" /><span> </span><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701100240.png" alt="image-20210701100239839" style="zoom:45%;" /></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701100259.png" alt="image-20210701100259414" style="zoom:45%;" /><span> </span><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701100321.png" alt="image-20210701100321512" style="zoom:45%;" /></p><h2 id='隐马尔可夫模型与条件随机场'><span>隐马尔可夫模型与条件随机场</span></h2><p><strong><span>概率图模型</span></strong><span>(Probabilistic Graphical Model)是使用图表示变量及变量间概率依赖关系的方法。在概率图模型中，可以根据可观测变量推测出未知变量的条件概率分布等信息。如果把序列标注任务中的输入序列看作观测变量，而把输出序列看作需要预测的未知变量，那么就可以把概率图模型应用于命名实体识别等序列标注任务。</span></p><p>&nbsp;</p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629202938.png" alt="image-20210629202930719" style="zoom: 45%;" /></p><h3 id='隐马尔可夫模型'><span>隐马尔可夫模型</span></h3><p><strong><span>隐马尔可夫模型</span></strong><span>是一种经典的序列模型[96, 102, 103] 。它在语音识别、自然语言处理的很多领域得到了广泛的应用。隐马尔可夫模型的本质就是概率化的马尔可夫过程，这个过程隐含着状态间转移和可见状态生成的概率。该模型是一个双重随机过程，我们不知道具体的状态序列，只知道状态转移的概率，即模型的状态转换过程是不可观察的（隐蔽的），而可观察事件的随机过程是隐蔽状态转换过程的随机函数。</span></p><p><span>一方面，</span><strong><span>隐马尔可夫模型</span></strong><span>中用</span><strong><span>发射概率</span></strong><span>(Emission Probability)来描述</span><strong><span>隐含状态</span></strong><span>和</span><strong><span>可见状态</span></strong><span>之间存在的输出概率，同样的，隐马尔可夫模型还会描述系统</span><strong><span>隐含状态</span></strong><span>的</span><strong><span>转移概率</span></strong><span>(Transition Probability)，它们都可以被看做是条件概率矩阵。</span></p><h4 id='一般来说隐马尔可夫模型中包含下面三个问题'><span>一般来说，隐马尔可夫模型中包含下面三个问题：</span></h4><p><span>• 隐含状态序列的概率计算，即给定模型(转移概率和发射概率)，根据可见状态序列计算在该模型下得到这个结果的概率，这个问题的求解需要用到前后向算法。</span>
+<span>• 参数学习，即给定硬币种类(隐含状态数量)，根据多个可见状态序列估计模型的参数(转移概率)，这个问题的求解需要用到 EM 算法。</span></p><p><span>• 解码，即给定模型(转移概率和发射概率)和可见状态序列，计算在可见状态序列的情况下，最可能出现的对应的状态序列，这个问题的求解需要用到基于动态规划的方法，通常也被称作维特比算法(Viterbi Algorithm)。</span></p><p><span>隐马尔可夫模型处理序列标注问题的基本思路是：</span>
+<span>• 第一步：根据可见状态序列（输入序列）和其对应的隐含状态序列（标记序列）</span>
+<span>样本，估算模型的转移概率和发射概率；</span>
+<span>• 第二步：对于给定的可见状态序列，预测概率最大的隐含状态序列，比如，根</span>
+<span>据输入的词序列预测最有可能的命名实体标记序列</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701100740.png" alt="image-20210701100740745" style="zoom:45%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701100640.png" alt="image-20210701100640705" style="zoom:45%;" /></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701100902.png" alt="image-20210701100902042" style="zoom:50%;" /></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701100957.png" alt="image-20210701100957070" style="zoom:45%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701101025.png" alt="image-20210701101025731" style="zoom:45%;" /></p><p>&nbsp;</p><p><span>算法复杂性均为</span><span class="MathJax_SVG" tabindex="-1" style="font-size: 100%; display: inline-block;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="8.389ex" height="2.811ex" viewBox="0 -906.7 3612.1 1210.2" role="img" focusable="false" style="vertical-align: -0.705ex;"><defs><path stroke-width="0" id="E21-MJMATHI-4F" d="M740 435Q740 320 676 213T511 42T304 -22Q207 -22 138 35T51 201Q50 209 50 244Q50 346 98 438T227 601Q351 704 476 704Q514 704 524 703Q621 689 680 617T740 435ZM637 476Q637 565 591 615T476 665Q396 665 322 605Q242 542 200 428T157 216Q157 126 200 73T314 19Q404 19 485 98T608 313Q637 408 637 476Z"></path><path stroke-width="0" id="E21-MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path><path stroke-width="0" id="E21-MJMATHI-4E" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path><path stroke-width="0" id="E21-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path><path stroke-width="0" id="E21-MJMATHI-54" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path><path stroke-width="0" id="E21-MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><use xlink:href="#E21-MJMATHI-4F" x="0" y="0"></use><use xlink:href="#E21-MJMAIN-28" x="763" y="0"></use><g transform="translate(1152,0)"><use xlink:href="#E21-MJMATHI-4E" x="0" y="0"></use><use transform="scale(0.707)" xlink:href="#E21-MJMAIN-32" x="1291" y="513"></use></g><use xlink:href="#E21-MJMATHI-54" x="2519" y="0"></use><use xlink:href="#E21-MJMAIN-29" x="3223" y="0"></use></g></svg></span><script type="math/tex">O(N^2T)</script></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701101105.png" alt="image-20210701101105800" style="zoom:45%;" /></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701101158.png" alt="image-20210701101158243" style="zoom:45%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701101219.png" alt="image-20210701101219303" style="zoom:45%;" />
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701101240.png" alt="image-20210701101240061" style="zoom:53%;" /></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701101253.png" alt="image-20210701101253696" style="zoom:45%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701101307.png" alt="image-20210701101307671" style="zoom:45%;" />
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701101333.png" alt="image-20210701101333245" style="zoom:50%;" /></p><h3 id='条件随机场'><span>条件随机场</span></h3><p><span>条件随机场模型在隐马尔可夫模型的基础上，解决了这个问题 标注偏置（Label Bias）。</span></p><p><strong><span>基本思路</span></strong><span>：给定观察序列 X，输出标识序列 Y，通过计算 P(Y|X) 求解最优标注序列。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701101641.png" alt="image-20210701101641810" style="zoom:53%;" /></p><p><span>条件随机场模型处理命名实体识别任务时，可见状态序列对应着文本内容，隐含状态序列对应着待预测的标签。对于命名实体识别任务，需要单独设计若干适合命名实体识别任务的特征函数。例如在使用 BIOES 标准标注命名实体识别任务时，标签“B-ORG”5后面的标签必然是“I-ORG”或是“E-ORG”，而不可能是“O”，针对此规则可以设计相应特征函数。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629203643.png" alt="image-20210629203643051" style="zoom: 67%;" /></p><p><img src="C:/Users/hsupengbo/AppData/Roaming/Typora/typora-user-images/image-20210629203652707.png" alt="image-20210629203652707" style="zoom:50%;" /></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701101718.png" alt="image-20210701101718673" style="zoom:50%;" /></p><h2 id='词法分析与词性标注'><span>词法分析与词性标注</span></h2><h3 id='概述'><span>概述</span></h3><p><span>词性或称词类(Part-of-Speech, POS)是词汇最重要的特性，是连接词汇到句法的桥梁。</span></p><h4 id='不同语言的词法分析'><span>不同语言的词法分析</span></h4><ul><li><span>曲折语(如，英语、德语、俄语等)：用词的形态变化表示语法关系，一个形态成分可以表示若干种不同的语法意义，词根和词干与语词的附加成分结合紧密。</span></li></ul><p><strong><span>词法分析</span></strong><span>：词的形态分析(形态还原)。</span></p><ul><li><span>分析语(孤立语)(如：汉语)：分词。</span></li><li><span>黏着语(如：日语等)：分词＋形态还原。</span></li></ul><h4 id='英语的形态分析'><span>英语的形态分析</span></h4><p><strong><span>基本任务</span></strong></p><ul><li><span>单词识别</span></li><li><span>形态还原</span>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701102004.png" alt="image-20210701102004112" style="zoom:53%;" /></li></ul><h3 id='汉语自动分词'><span>汉语自动分词</span></h3><p><strong><span>汉语自动分词的基本原则</span></strong></p><p><span>1、语义上无法由组合成分直接相加而得到的字串应该合并为一个分词单位。(合并原则)</span></p><p><span>2、语类无法由组合成分直接得到的字串应该合并为一个分词单位。 (合并原则)</span></p><p><strong><span>汉语自动分词的辅助原则</span></strong></p><ol start='' ><li><span>有明显分隔符标记的应该切分之 (切分原则)</span></li><li><span>附着性语(词)素和前后词合并为一个分词单位(合并原则)</span></li><li><span>使用频率高或共现率高的字串尽量合并为一个分词单位 (合并原则)</span></li><li><span>双音节加单音节的偏正式名词尽量合并为一个分词单位 (合并原则)</span></li><li><span>双音节结构的偏正式动词应尽量合并为一个分词单位 (合并原则)</span></li><li><span>内部结构复杂、合并起来过于冗长的词尽量切分(切分原则)</span></li></ol><h3 id='分词与词性标注结果评价方法'><span>分词与词性标注结果评价方法</span></h3><p><span>♦两种测试</span></p><ul><li><span>封闭测试/ 开放测试</span></li><li><span>专项测试/ 总体测试</span></li></ul><h4 id='评价指标'><span>评价指标</span></h4><ul><li><span>正确率(Correct ratio/Precision, P ): 测试结果中正确切分或标注的个数占系统所有输出结果的比例。假设系统输出N 个，其中，正确的结果为n个，那么，</span><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629204100.png" alt="image-20210629204100418" style="zoom:50%;" /></li><li><span>召回率(找回率) (Recall ratio, R ): 测试结果中正确结果的个数占标准答案总数的比例。假设系统输出N 个结果,其中，正确的结果为 n个，而标准答案的个数为M 个，那么，</span><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629204107.png" alt="image-20210629204107457" style="zoom: 50%;" /></li><li><span>两种标记： ROOV 指集外词的召回率；RIV 指集内词的召回率。</span>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629204130.png" alt="image-20210629204130346" style="zoom: 45%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701102515.png" alt="image-20210701102515007" style="zoom:45%;" /></li></ul><h4 id='汉语自动分词基本算法'><span>汉语自动分词基本算法</span></h4><p><span>♦有词典切分/ 无词典切分</span>
+<span>♦基于规则的方法/ 基于统计的方法</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701102636.png" alt="image-20210701102636171" style="zoom:32%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701102653.png" alt="image-20210701102652964" style="zoom:32%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701102716.png" alt="image-20210701102715896" style="zoom:32%;" /></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701102748.png" alt="image-20210701102747832" style="zoom:45%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701102800.png" alt="image-20210701102800497" style="zoom:45%;" /></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701102819.png" alt="image-20210701102819805" style="zoom:45%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701102831.png" alt="image-20210701102831109" style="zoom:45%;" /></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701102857.png" alt="image-20210701102857494" style="zoom:45%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701102913.png" alt="image-20210701102913328" style="zoom:45%;" /></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701102927.png" alt="image-20210701102927378" style="zoom:45%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701102944.png" alt="image-20210701102944513" style="zoom:45%;" /></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701102959.png" alt="image-20210701102959084" style="zoom:45%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701103017.png" alt="image-20210701103017627" style="zoom:45%;" /></p><p><strong><span>生成式模型与判别式模型的比较</span></strong></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701103054.png" alt="image-20210701103054432" style="zoom:45%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701103108.png" alt="image-20210701103107938" style="zoom:45%;" /></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701103125.png" alt="image-20210701103125640" style="zoom:40%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701103152.png" alt="image-20210701103152517" style="zoom:40%;" />
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701103214.png" alt="image-20210701103214080" style="zoom:50%;" /></p><p><strong><span>未登录词识别</span></strong>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701103339.png" alt="image-20210701103339300" style="zoom:53%;" /></p><p>&nbsp;</p><h3 id='词性标注方法'><span>词性标注方法</span></h3><h4 id='基于规则的词性标注方法'><span>基于规则的词性标注方法</span></h4><ul><li><span>手工编写词性歧义消除规则</span></li><li><span>机器自动学习规则</span></li></ul><h4 id='基于统计模型的词性标注方法'><span>基于统计模型的词性标注方法</span></h4><ul><li><p><span>基于错误驱动的机器学习方法</span>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701103523.png" alt="image-20210701103523383" style="zoom:53%;" /></p><p>&nbsp;</p></li></ul><h4 id='基于-hmm-的词性标注方法'><span>基于 HMM 的词性标注方法</span></h4><h4 id='规则和统计方法相结合的词性标注方法'><span>规则和统计方法相结合的词性标注方法</span></h4><ul><li><span>规则消歧，统计概率引导</span></li><li><span>或者统计方法赋初值，规则消歧</span></li></ul><h4 id='基于有限状态变换机的词性标注方法'><span>基于有限状态变换机的词性标注方法</span></h4><h4 id='基于神经网络的词性标注方法'><span>基于神经网络的词性标注方法</span></h4><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701103701.png" alt="image-20210701103701374" style="zoom:45%;" /><span> </span><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701103726.png" alt="image-20210701103726659" style="zoom:45%;" />
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701103742.png" alt="image-20210701103742016" style="zoom:45%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701103825.png" alt="image-20210701103825624" style="zoom:45%;" /></p><h2 id='语义分析'><span>语义分析</span></h2><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701104006.png" alt="image-20210701104006356" style="zoom:50%;" /></p><h3 id='语义理论'><span>语义理论</span></h3><p><span>词的指称作为意义</span>
+<span>心理图像、大脑图像或思想作为意义</span>
+<span>说话者的意图作为意义</span>
+<span>过程语义</span>
+<span>词汇分解学派</span>
+<span>条件真理模型</span>
+<span>情景语义学</span>
+<span>模态逻辑</span></p><h3 id='格语法'><span>格语法</span></h3><h4 id='基本观点'><span>基本观点</span></h4><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701104226.png" alt="image-20210701104225938" style="zoom:50%;" /></p><h4 id='格的定义'><span>格的定义</span></h4><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701104245.png" alt="image-20210701104245616" style="zoom:53%;" /></p><h4 id='格语法的三条基本规则'><span>格语法的三条基本规则</span></h4><p><span>(1) </span><strong><span>S→M+P</span></strong></p><p><span>句子 S 可以改写成情态(Modality)和命题(Proposition) 两大部分</span></p><p><span>(2) </span><strong><span>P→V+C1+C2+ … Cn</span></strong></p><p><span>命题 P 都可以改写成一个动词V 和若干个格 C 。</span></p><p><span>(3) </span><strong><span>C →K + NP</span></strong></p><p><span>K 为格标，是各种格范畴在底层结构中的标记，可以有各种标记形式</span></p><h4 id='格表'><span>格表</span></h4><p><span>(1) 施事格(Agentive)：动作的发生者；</span>
+<span>(2) 工具格(Instrumental)：对动作或状态而言作为某种因素而牵涉到的无生命的力量或客体。</span>
+<span>(3) 承受格(Dative)：由动词确定的动作或状态所影响的有生物。如，He is tall. </span></p><p><span>(4) 使成格(Factitive)：由动词确定的动作或状态所形成的客体或有生物。或理解为：动词意义的一部分的客体或有生物。如：John dreamedabout Mary. </span>
+<span>(5) 方位格(Locative)：由动词确定的动作或状态的处所或空间方位。如：He is in the house</span>
+<span>(6) 客体格(Objective)：由动词确定的动作或状态所影响的事物。如：He bought a book.</span>
+<span>(7) 受益格(Benefactive)：由动词确定的动作为之服务的有生命的对象。如：He sang a song for Mary. </span>
+<span>(8) 源点格(Source)：由动词确定的动作所作用到的事物的来源或发生位置变化过程中的起始位置。如：He bought a book from Mary.</span>
+<span>(9) 终点格(Goal)：由动词确定的动作所作用到的事物的终点或发生位置变化过程中的终端位置。如：I sold a car to Mary. </span>
+<span>(10) 伴随格(Comitative)：由动词确定的与施事共同完成动作的伴随者。如：He sang a song with Mary. </span></p><h4 id='格语法描写汉语的局限性'><span>格语法描写汉语的局限性</span></h4><p><span>汉语的一些无动句、流水句、连动句、紧缩、动</span>
+<span>补、省略等结构，无法或不必用一个统率全句的模式</span>
+<span>来描述，其中连动句和兼语句尤为突出。</span></p><h3 id='语义网络'><span>语义网络</span></h3><h4 id='语义网络的概念'><span>语义网络的概念</span></h4><p><span>语义网络通过由概念和语义关系组成的有向图来表达知识、描述语义。</span></p><ul><li><span>有向图：图的结点表示概念，图的边表示概念之间的关系。</span></li><li><span>边的类型：(1) “是一种”：A到B的边表示“A是B的一种特例”；(2) “是部分”：A到B的边表示 “A是B的一部分”；… …</span></li></ul><p><strong><span>事件的语义关系</span></strong>
+<span>(1)分类关系：事物之间的类属关系。</span>
+<span>(2)聚焦关系：多个下位概念构成一个上位概念。</span>
+<span>(3)推论关系：由一个概念推出另一个概念。</span>
+<span>(4)时间、位置关系：事实发生或存在的时间、位置。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701104411.png" alt="image-20210701104411165" style="zoom:45%;" /></p><h3 id='概念依存理论'><span>概念依存理论</span></h3><p><span>CD 理论的组成: </span></p><ul><li><p><span>三个层次之一：</span><strong><span>动作基元</span></strong>
+<span>(1) 在概念依存层次：规定了一组动作基元，其他动作是由这些动作基元组合而成的。如：抓(Grasp)、移动(Move)、传送(Trans)、去(Go)、推(Propel)、吸收(Ingest)、撞击(Hit)等。</span>
+<span>(2) 关于精神世界的概念：心传(MTrans)、概念化(Conceptualize)、心建(MBuild)。</span>
+<span>(3) 关于手段或工具：闻(Smell)、看(Look-at)、听(Listen-to)、说(Speak)。</span></p></li><li><p><span>三个层次之二：</span><strong><span>剧本</span></strong>
+<span>用来描写遇到一些常见场景或场合时所采取的一些固定的成套的动作。</span></p></li><li><p><span>三个层次之三：</span><strong><span>计划</span></strong><span> </span></p><p><span>计划中的每一步都是一个剧本</span></p></li></ul><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701104509.png" alt="image-20210701104509617" style="zoom:50%;" /></p><h3 id='词义消歧'><span>词义消歧</span></h3><h4 id='基本方法'><span>基本方法</span></h4><ul><li><p><span>早期基于规则的消歧方法</span></p></li><li><p><span>统计机器学习消歧方法</span></p><ul><li><p><span>有监督学习方法</span></p></li><li><p><span>无监督学习方法</span></p><p><span>基本思路：一个词的不同语义一般发生在不同的上下文中。</span></p></li></ul></li></ul><ul><li><span>基于词典信息的消歧方法</span></li></ul><h4 id='有监督的词义消歧方法'><span>有监督的词义消歧方法</span></h4><p><strong><span>总体思路</span></strong><span>：通过建立分类器，利用划分多义词的上下文类别的方法来区分多义词的词义。</span></p><ul><li><h5 id='基于互信息的消歧方法brown-et-al-1991'><strong><span>基于互信息的消歧方法</span></strong><span>(Brown et al., 1991)</span></h5><p><strong><span>基本思想</span></strong><span>：假设我们有一个双语对齐的平行语料库，以法语和英语为例，通过词语对齐模型每个法语单词可以找到对应的英语单词，一个多义的法语单词在不同的上下文中对应多种不同的英语翻译。</span></p><p><span>利用 </span><strong><span>Flip-Flop 算法</span></strong><span>来解决指示器分类问题(假设多义法语词只有两个语义)：</span></p></li><li><h5 id='基于贝叶斯分类器的词义消歧方法'><strong><span>基于贝叶斯分类器的词义消歧方法</span></strong></h5></li><li><h5 id='基于最大熵的词义消歧方法'><strong><span>基于最大熵的词义消歧方法</span></strong></h5></li></ul><h4 id='基于词典的词义消歧方法'><span>基于词典的词义消歧方法</span></h4><p><span>(1)</span><strong><span>基于语义定义的消歧</span></strong></p><p><strong><span>基本思想</span></strong><span>：词典中词条本身的定义作为判断其语义的条件。</span></p><p><span>(2)</span><strong><span>基于义类辞典(thesaurus) 的消歧</span></strong>
+<strong><span>基本思想</span></strong><span>：多义词的不同义项在使用时往往具有不同的上下文语义类，即通过上下文的语义范畴可以判断多义词的使用义项。</span></p><p><span>3)</span><strong><span>基于双语词典的消歧</span></strong>
+<strong><span>基本思想</span></strong><span>：需要消歧的语言称为第一语言，把需要借助的另一种语言称为第二语言。建立多义词 x 与相关词 y 之间的搭配关系，然后，在第二种语言的语料库中统计对应 x 不同词义的翻译与相关词 y 的翻译同现的次数，同现次数高的搭配对应的义项即为消歧后的词义。</span></p><p><span>(4)</span><strong><span>Yarowsky 消歧算法</span></strong>
+<strong><span>基本思想</span></strong><span>：基于词典的词义消歧算法都是分别处理每个出现的歧义词，且对歧义词有两个限制：</span></p><ul><li><span>每篇文本只有一个意义：在任意给定的文本中，目标词的词义具有高度的一致性；</span></li><li><span>每个搭配只有一个意义：目标词和周围词之间的相对距离、词序和句法关系，为目标词的意义提供了很强的一致性的词义消歧线索。</span></li></ul><h4 id='无监督的词义消歧方法'><span>无监督的词义消歧方法</span></h4><p><span>        与(Gale, 1992) 方法类似，对于一个具有k 个义项的词w，估计使用义项 si (ki1) 的上下文中出现词vj 的概率，即 p(vj|si)。</span>
+<span>H. Schütze (1998) 提出的上下文分组辨识 (context-group discrimination) 方法是无监督的词义消歧方法的典型代表。</span>
+<span>​        但是，在该方法中参数 p(vj|si)的估计不是根据有标注的训练语料，而是在无标注的语料上进行，开始时随机地初始化参数，然后根据EM算法重新估计该概率值。</span>
+<span>​        主要问题在于，很多同义词的同一个意义出现的上下文往往有很大的差异，因此，很难保证同一个意义的上下文被划分到同一个等价类中。</span></p><p>&nbsp;</p><h3 id='语义角色标注'><span>语义角色标注</span></h3><p><span>语义角色标注一般是在句法分析的基础上进行的。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701104847.png" alt="image-20210701104847066" style="zoom:45%;" /></p><h2 id='机器翻译'><span>机器翻译</span></h2><p><span>机器翻译 (machine translation, MT)是用计算机把一种语言( 源语言, sourcelanguage) 翻译成另一种语言( 目标语言,target language) 的一门学科和技术。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629210132.png" alt="image-20210629210132780" style="zoom: 50%;" /></p><p><span>机器翻译技术大体上可以分为三种方法，分别为基于规则的机器翻译、统计机器翻译以及神经机器翻译。</span></p><p><span>第一代机器翻译技术是主要使用基于规则的机器翻译方法，其主要思想是通过形式文法定义的规则引入源语言和目标语中的语言学知识。</span></p><p><span>统计机器翻译兴起于上世纪 90 年代[9, 20] ，它利用统计模型从单/双语语料中自动学习翻译知识。具体来说，可以使用单语语料学习语言模型，使用双语平行语料学习翻译模型，并使用这些统计模型完成对翻译过程的建模。整个过程不需要人工编写规则，也不需要从实例中构建翻译模板。无论是词还是短语，甚至是句法结构，统计机器翻译系统都可以自动学习。人更多的是定义翻译所需的特征和基本翻译单元的形式，而翻译知识都保存在模型的参数中。</span></p><p><span>随着机器学习技术的发展，基于深度学习的神经机器翻译逐渐兴起。自 2014 年开始，它在短短几年内已经在大部分任务上取得了明显的优势[21, 22, 23, 24, 25] 。在神经机器翻译中，词串被表示成实数向量，即分布式向量表示。这样，翻译过程并不是在离散化的单词和短语上进行，而是在实数向量空间上计算。因此与之前的技术相比，它在词序列表示的方式上有着本质的改变。通常，机器翻译可以被看作一个序列到另一个序列的转化。在神经机器翻译中，序列到序列的转化过程可以由编码器-解码器(Encoder-Decoder)框架实现。其中，编码器把源语言序列进行编码，并提取源语言中的信息进行分布式表示，之后解码器再把这种信息转换为另一种语言的表达。</span></p><h3 id='机器翻译的困难'><span>机器翻译的困难</span></h3><ul><li><span>自然语言中普遍存在的歧义和未知现象</span></li><li><span>机器翻译不仅仅是字符串的转换</span></li><li><span>机器翻译的解不唯一，而且始终存在的人为的标准</span></li></ul><p><strong><span>基本翻译方法</span></strong>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701105239.png" alt="image-20210701105239827" style="zoom:50%;" /></p><h3 id='直接转换法'><span>直接转换法</span></h3><p><span>从源语言句子的表层出发，将单词、短语或句子直接置换成目标语言译文，必要时进行简单的词序调整。对原文句子的分析仅满足于特定译文生成的需要。这类翻译系统一般针对某一个特定的语言对，将分析与生成、语言数据、文法和规则与程序等都融合在一起。</span></p><h3 id='基于规则的翻译方法'><span>基于规则的翻译方法</span></h3><p><span>1957年美国学者V. Yingve在《句法翻译框架》(Framework for Syntactic Translation) 一文中提出了对源语言和目标语言均进行适当描述、把翻译机制与语法分开、用规则描述语法的实现思想，这就是基于规则的翻译方法。</span></p><p><strong><span>基于规则的翻译过程分成6个步骤</span></strong><span>：</span>
+<span>(a) 对源语言句子进行词法分析</span>
+<span>(b) 对源语言句子进行句法/语义分析</span>
+<span>(c) 源语言句子结构到译文结构的转换</span>
+<span>(d) 译文句法结构生成</span>
+<span>(e) 源语言词汇到译文词汇的转换</span>
+<span>(f ) 译文词法选择与生成</span></p><p><span>由于基于规则的翻译方法执行过程为：“独立分析－独立生成－相关转换”因此，又称基于转换的翻译方法。</span></p><p><strong><span>对基于规则的翻译方法的评价</span></strong><span>：</span>
+<strong><span>优点</span></strong><span>：可以较好地保持原文的结构，产生的译文结构与源文的结构关系密切，尤其对于语言现象已知的或句法结构规范的源语言语句具有较强的处理能力和较好的翻译效果。</span>
+<strong><span>弱点</span></strong><span>：规则一般由人工编写，工作量大，主观性强，一致性难以保障，不利于系统扩充，对非规范语言现象缺乏相应的处理能力。</span></p><h3 id='基于中间语言的翻译方法'><span>基于中间语言的翻译方法</span></h3><p><strong><span>方法</span></strong><span>：输入语句→中间语言→ 翻译结果</span>
+<span>• </span><strong><span>代表系统</span></strong><span>：JANUS (CMU) 早期版本</span></p><ul><li><span>源语言解析器</span></li><li><span>比较准确的中间语言(Interlingua)</span></li><li><span>目标语言生成器(Target Language Generator)</span></li></ul><p><strong><span>对基于中间语言的翻译方法评价</span></strong><span>：</span>
+<strong><span>优点</span></strong><span>：中间语言的设计可以不考虑具体的翻译语言对，因此，该方法尤其适合多语言之间的互译。</span>
+<strong><span>弱点</span></strong><span>：如何定义和设计中间语言的表达方式，以及如何维护并不是一件容易的事情，中间语言在语义表达的准确性、完整性等很多方面，都面临若干困难。</span></p><h3 id='基于语料库的翻译方法'><span>基于语料库的翻译方法</span></h3><h4 id='基于事例的翻译方法'><span>基于事例的翻译方法</span></h4><p><span>•方法：输入语句→与事例相似度比较→翻译结果</span>
+<span>• 资源：大规模事例库</span>
+<span>• 代表系统：ATR-MATRIX (ATR, Japan)</span></p><p><strong><span>对基于实例的翻译方法评价</span></strong><span>：</span>
+<strong><span>优点</span></strong><span>：不要求源语言句子必须符合语法规定，翻译机制一般不需要对源语言句子做深入分析。</span>
+<strong><span>弱点</span></strong><span>：两个不同的句子之间的相似性（包括结构相似性和语义相似性）往往难以把握，尤其在口语中，句子结构一般比较松散，成分冗余和成分省略都较严重，这更增加了分析句子与事例句子的比较难度。另外，系统往往难以处理事例库中没有记录的陌生的语言现象，而且当事例库达到一定规模时，其事例检索的效率较低。</span></p><p>&nbsp;</p><h2 id='统计翻译方法'><span>统计翻译方法</span></h2><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629210924.png" alt="image-20210629210924129" style="zoom: 45%;" /></p><p>&nbsp;</p><h3 id='噪声信道模型'><strong><span>噪声信道模型</span></strong></h3><p><span>一种语言T 由于经过一个噪声信道而发生变形，从而在信道的另一端呈现为另一种语言 S (信道意义上的输出，翻译意义上的源语言)。翻译问题实际上就是如何根据观察到的 S，恢复最为可能的T 问题。这种观点认为，任何一种语言的任何一个句子都有可能是另外一种语言中的某个句子的译文，只是可能有大有小[Brown et. al, 1990]。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629211003.png" alt="image-20210629211003406" style="zoom:45%;" /></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629211021.png" alt="image-20210629211021703" style="zoom: 50%;" /></p><p>&nbsp;</p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629211046.png" alt="image-20210629211046227" style="zoom: 53%;" /></p><p>&nbsp;</p><h3 id='统计翻译中的三个关键问题'><strong><span>统计翻译中的三个关键问题</span></strong><span>：</span></h3><p><span>(1)估计语言模型概率p(T)；</span>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629211114.png" alt="image-20210629211114659" style="zoom: 53%;" /></p><p><span>(2)估计翻译概率 p(S|T)；</span>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629211149.png" alt="image-20210629211149768" style="zoom: 53%;" />
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629211213.png" alt="image-20210629211213388" style="zoom: 53%;" />
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629211304.png" alt="image-20210629211234852" style="zoom: 53%;" /></p><p><span>(3)快速有效地搜索T 使得 p(T)×p(S | T) 最大。</span></p><h3 id='基于词的机器翻译建模'><span>基于词的机器翻译建模</span></h3><p><span>IBM 翻译模型1-5</span></p><figure><table><thead><tr><th style='text-align:left;' ><span>模型</span></th><th><span>假设</span></th><th><span>参数训练</span></th><th><span>简评</span></th></tr></thead><tbody><tr><td style='text-align:left;' ><span>IBM1</span></td><td><span>翻译模型仅与单词间的直译概率有关，句长概率和对齐概率都是均匀分布。</span></td><td><span>应用EM算法，从双语语料库中训练获得，可以得到全局最优参数，与初始值无关。</span></td><td><span>模型简单、易于实现，但仅考虑了单词的影响，没有考虑词序的影响。</span></td></tr><tr><td style='text-align:left;' ><span>IBM2</span></td><td><span>翻译模型和句长模型同IBM1，对位概率为0阶对齐</span></td><td><span>应用EM算法，从双语语料库中训练获得，只能收敛到局部最优。</span></td><td><span>模型简单、易于实现，同时考虑了单词和词序的影响。</span></td></tr><tr><td style='text-align:left;' ><span>IBM3</span></td><td><span>翻译模型依赖于繁衍率模型和单词间的直译概率，对齐概率取0阶词对齐。</span></td><td><span>需要首先应用模型IBM1或IBM2对双语语料进行单词级对位，然后训练繁衍概率参数。</span></td><td><span>引入了描述单词间一对多情况的繁衍概率，参数较多，实现过程较复杂。</span></td></tr><tr><td style='text-align:left;' ><span>IBM4</span></td><td><span>翻译模型依赖于单词间的直译概率繁衍概率、词类、语言片断中心位置和语言片断内相对位置等因素对齐概率取1阶词对齐。</span></td><td><span>需要首先应用模型IBM1~IBM3对双语语料进行单词级对位和语言片断划分，然后训练两种位置概率参数。</span></td><td><span>不仅考虑了一对多的情况，还将语言片断作为一个整体进行考虑。参数较多、不易实现。</span></td></tr><tr><td style='text-align:left;' ><span>IBM5</span></td><td><span>翻译模型依赖于直译概率、繁衍概率、语言片断中心位置、语言片断内相对位置和对位的历史等因素。</span></td><td><span>需要在模型IBM1~ IBM4参数训练的基础上获得参数</span></td><td><span>对IBM4进行了修正，同时考虑了当前对位信息和对位历史。模型的表现力最强，但过于复杂，实用性不强。</span></td></tr><tr><td style='text-align:left;' ><span>HMM</span></td><td><span>句长模型和翻译模型同IBM1，对齐模型为1阶对齐。</span></td><td><span>应用EM算法，从双语对照语料中训练获得。</span></td><td><span>模型简单，易于实现，考虑了词序的影响。</span></td></tr></tbody></table></figure><p>&nbsp;</p><h3 id='基于短语的翻译模型'><span>基于短语的翻译模型</span></h3><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629212550.png" alt="image-20210629212550789" style="zoom:50%;" /></p><p><span>不难发现，基于单词的模型并不能很好地捕捉单词间的搭配关系。相比之下，使用更大颗粒度的翻译单元是一种对搭配进行处理的方法。下面来一起看看，基于单词的模型所产生的问题以及如何使用基于短语的模型来缓解该问题。</span></p><p><span>实际上，单词本身也是一种短语。从这个角度说，基于单词的翻译模型是包含在基于短语的翻译模型中的。而这里所说的短语包括多个连续的单词，可以直接捕捉翻译中的一些局部依赖。而且，由于引入了更多样的翻译单元，可选择的翻译路径数量也大大增加。本质上，引入更大颗粒度的翻译单元给模型增加了灵活性，同时增大了翻译假设空间。如果建模合理，更多的翻译路径会增加找到高质量译文的机会。在7.2节还将看到，基于短语的模型会从多个角度对翻译问题进行描述，包括基础数学建模、调序等等。</span></p><h4 id='基于最大熵的方法判别式'><span>基于最大熵的方法(判别式)</span></h4><p><span>生成式模型转向判别式模型</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629212440.png" alt="image-20210629212440636" style="zoom: 53%;" /></p><p><strong><span>最大熵方法的基本思想</span></strong>
+<span>➢ 任务</span>
+<span>	</span><span>➢ 对于一个随机事件，假设已经有了一组样例，我们希望建立一个统计模型来模拟这个随机事件的分布</span>
+<span>➢ 目标</span>
+<span>	</span><span>➢ 对于一组特征，使得统计模型在这一组特征上的模型分布与样例中的经验分布完全一致，同时不对未知事件作任何假设，即保证这个模型尽可能的“均匀”(也就是要求模型的熵值达到最大)</span></p><h4 id='基于短语的翻译模型koehn-2003'><span>基于短语的翻译模型[Koehn, 2003]</span></h4><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629212816.png" alt="image-20210629212816397" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629212900.png" alt="image-20210629212843892" style="zoom: 53%;" /></p><h5 id='短语划分模型'><span>短语划分模型</span></h5><p><span>目标：将一个词序列如何划分为短语序列</span>
+<span>方法：一般假设每一种短语划分方式都是等概率的</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629212916.png" alt="image-20210629212916156" style="zoom: 53%;" />
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629212949.png" alt="image-20210629212949359" style="zoom: 30%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629213014.png" alt="image-20210629213014232" style="zoom: 30%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629213052.png" alt="image-20210629213052340" style="zoom: 30%;" />
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629213111.png" alt="image-20210629213111457" style="zoom: 40%;" />
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629213134.png" alt="image-20210629213134758" style="zoom: 45%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629213150.png" alt="image-20210629213150561" style="zoom: 45%;" />
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629213226.png" alt="image-20210629213226243" style="zoom: 53%;" /></p><h4 id='基于短语的翻译模型的解码算法'><span>基于短语的翻译模型的解码算法</span></h4><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629213251.png" alt="image-20210629213251640" style="zoom: 53%;" />
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629213314.png" alt="image-20210629213314619" style="zoom: 53%;" />
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629213331.png" alt="image-20210629213331579" style="zoom: 53%;" /></p><h5 id='柱搜索beam-search-ney-1992-tillmann-2003'><span>柱搜索(</span><strong><span>beam search</span></strong><span>) [Ney, 1992; Tillmann, 2003]</span></h5><p><strong><span>基本思想</span></strong><span>：给定一个输入句子，生成对应的短语序列，每个短语对应一组翻译候选。短语序列按从左到右的顺序或目标短语生成的先后顺序搜索最可能的翻译假设(hypothesis)。</span></p><p><span>采用适当的剪枝策略。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629213424.png" alt="image-20210629213424647" style="zoom: 53%;" /></p><h3 id='基于层次化短语的翻译模型'><span>基于层次化短语的翻译模型</span></h3><p><strong><span>问题提出</span></strong><span>：</span>
+<span>(1) 基于短语的翻译模型能够比较鲁棒地翻译较短的子串，当短语长度扩展到3个以上的单词时，翻译系统的性能提高很少，短语长度增大以后，数据稀疏问题变得非常严重。</span>
+<span>(2) 在很多情况下简单的短语翻译模型无法处理短语之间（尤其是长距离）的调序。</span>
+<span>(3) 基于短语翻译模型无法处理非连续短语翻译现象，例如 （在 … 时，when …）</span></p><p><span>基于层次短语的翻译过程同步进行双语解析，所使用的同步上下无关文法是从没有做任何句法信息标注的双语对照语料中自动学习获得的。</span></p><ol start='' ><li><span>层次短语翻译规则学习</span></li><li><span>层次短语模型解码过程</span></li></ol><p><strong><span>基于层次短语的模型</span></strong><span>（Hierarchical Phrase-based Model）是一个经典的统计机器翻译模型[88, 336] 。</span></p><p><span>这个模型可以很好地解决短语系统对翻译中长距离调序建模不足的问题。</span></p><p><strong><span>层次短语模型的核心是把翻译问题归结为两种语言词串的同步生成问题</span></strong><span>。实际上，词串的生成问题是自然语言处理中的经典问题，早期的研究更多的是关注单语句子的生成，比如，如何使用句法树描述一个句子的生成过程。层次短语模型的创新之处是把传统单语词串的生成推广到双语词串的同步生成上。这使得机器翻译可以使用类似句法分析的方法进行求解。</span></p><h3 id='树翻译模型'><span>树翻译模型</span></h3><p><span>◆树到串的翻译模型</span>
+<span>◆树到树的翻译模型</span>
+<span>◆串到树的翻译模型</span></p><p><strong><span>问题提出</span></strong><span>：</span>
+<span>(1) 基于层次短语的翻译模型只使用一个非终结符X，过于泛化。</span>
+<span>(2) 基于层次短语的翻译模型在处理长距离的短语调序问题时能力有限。</span></p><h4 id='树到串的翻译模型'><span>树到串的翻译模型</span></h4><p><span>Liu et al. (2006), Huang et al. (2006提出树到串的翻译模型。</span></p><p><span>◼ 句法分析： 将源语言句子分析为一棵句法结构树（短语结构树）</span>
+<span>◼ 树到串的转换：递归地将源语言句子的句法结构树转换为目标语言句子</span></p><p><span>1.树到串翻译规则抽取： 给定源语言和目标语言的双语平行句对（经过词语对齐、源语言端句法分析），抽取满足词语对齐的树到串翻译规则</span></p><p><span>2.确定满足词语对齐的树节点： 源语言句法树节点所能到达的目标语言子串与该树节点覆盖的源语言子串满足词语对齐约束。</span></p><p><span>3.对于每个满足词语对齐的树节点，我们可以抽取一条最小规则。</span></p><p><span>◼ 树到串模型的优势</span>
+<span>	</span><span>➢ 搜索空间小、解码效率高</span>
+<span>	</span><span>➢ 句法分析质量较高的前提下</span>
+<span>◼ 树到串模型的不足</span>
+<span>	</span><span>➢ 强烈依赖于源语言句法分析的质量</span>
+<span>	</span><span>➢ 利用源语言端句法结构精确匹配严重</span>
+<span>	</span><span>➢ 没有使用任何目标语言句法知识目标译文符合文法</span></p><h4 id='树到树的翻译模型'><span>树到树的翻译模型</span></h4><p><span>Zhang et al.(2007, 2008) 提出了树到树的翻译模型。</span></p><p><span>◼ 句法分析： 将源语言句子分析为一棵句法结构树（短语结构树）</span>
+<span>◼ 树到树的转换：递归地将源语言句子的句法结构树转换为目标语言句子的句法结构树，拼接叶结点得到译文。</span></p><p><span>◼ 解码算法：对于源语言句法结构树，自底往上或自顶往下考虑每个节点，为每个节点搜索能够匹配的树到树翻译规则。至所有节点匹配完毕，得到最佳译文。</span></p><p><span>◼ 确定满足词语对齐的树节点： 源语言句法树节点所覆盖的源语言子串与目标语言句法树节点所覆盖的目标语言子串满足词语对齐约束。为每对节点抽取树到树翻译规则。</span></p><p><span>◼ 树到树模型的优势</span>
+<span>	</span><span>➢ 搜索空间小、解码效率高</span></p><p><span>◼ 树到树模型的不足</span>
+<span>	</span><span>➢ 强烈依赖于源语言和目标语言句法分析的质量</span>
+<span>	</span><span>➢ 利用两端句法结构精确匹配严重</span>
+<span>	</span><span>➢ 翻译质量差</span></p><h4 id='串到树的翻译模型'><span>串到树的翻译模型</span></h4><p><span>Galley et al. (2004, 2006) ，Marcu et al. (2006) 提出了串到树的翻译模型。</span></p><p><span>◼ 串到树的转换：利用串到树转换规则，将源语言句子分析为一棵目标语言句法结构树，拼接叶结点得到译文。</span></p><p><span>◼ 串到树翻译规则抽取： 给定源语言和目标语言的双语平行句对（经过词语对齐、目标语言端句法分析），抽取满足词语对齐的串到树翻译规则</span></p><p><span>◼ 确定满足词语对齐的树节点： 目标语言句法树节点所能到达的源语言子串与该树节点覆盖的目标语言子串满足词语对齐约束</span></p><p><span>◼ 串到树模型的优势</span>
+<span>	</span><span>➢ 搜索空间大，保证译文符合文法，翻译质量高</span></p><p><span>◼ 串到树模型的不足</span>
+<span>	</span><span>➢ 解码速度受限</span>
+<span>	</span><span>➢ 未使用源语言端句法知识，存在词义消岐问题</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629214307.png" alt="image-20210629214206383" style="zoom: 53%;" /></p><h3 id='系统融合'><span>系统融合</span></h3><p><span>◆系统融合方法：</span>
+<span>(1) 句子级系统融合</span>
+<span>	</span><span>针对同一个源语言句子，利用最小贝叶斯风险解码或重打分方法比较多个机器翻译系统的译文输出，将最优的翻译结果作为最终的一致翻译结果。</span>
+<span>(2) 短语级系统融合</span></p><p><span>	</span><span>利用多个翻译系统的输出结果，重新抽取短语翻译规则集合，并利用新的短语翻译规则进行重新解码。</span></p><p><span>(3) 词语级系统融合</span></p><p><span>	</span><span>首先将多个翻译系统的译文输出进行词语对齐，构建一个混淆网络，对混淆网络中的每个位置的候选词进行置信度估计，最后进行混淆网络解码。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210629214418.png" alt="image-20210629214418149" style="zoom:50%;" /></p><h3 id='译文评估方法'><span>译文评估方法</span></h3><p><span>◆常用的评测指标</span>
+<span>➢主观评测： (1)流畅度；(2)充分性；(3) 语义保持性。</span></p><p><span>◆客观评测</span>
+<span>(1) </span><strong><span>句子错误率</span></strong><span>：译文与参考答案不完全相同的句子为错误句子。错误句子占全部译文的比率。</span>
+<span>(2) </span><strong><span>单词错误率</span></strong><span>(Multiple Word Error Rate on Multiple Reference, 记作 mWER)：分别计算译文与每个参考译文的编辑距离，以最短的为评分依据，进行归一化处理</span></p><p><span>(3)</span><strong><span>与位置无关的单词错误率</span></strong><span>(Position independent mWER, 记作mPER )：不考虑单词在句子中的顺序</span>
+<span>(4) </span><strong><span>METEOR</span></strong><span> 评测方法</span>
+<span>	</span><span>对候选译文与参考译文进行词对齐，计算词汇完全匹配、词干匹配、同义词匹配等各种情况的准确率(P)、召回率(R)和F平均值</span></p><p><span>(5) </span><strong><span>BLEU</span></strong><span>评价方法[Papineni, 2002]－BiLingual Evaluation Understudy, IBM</span>
+<span>	</span><span>➢基本思想：将机器翻译产生的候选译文与人翻译的多个参考译文相比较，越接近，候选译文的正确率越高。</span>
+<span>	</span><span>➢实现方法：统计同时出现在系统译文和参考译文中的n 元词的个数，最后把匹配到的n元词的数目除以系统译文的n元词数目，得到评测结果。</span></p><p><span>(6) </span><strong><span>NIST</span></strong><span> 评测方法 National Institute of Standards and Technology</span>
+<span>	</span><span>➢BLEU评分公式中采用的n元语法同现概率的几何平均方法使评分值对于各种n元语法同现的比例具有相同的敏感性，但实际上，这种做法存在着潜在的矛盾，因为n值较大的统计单元出现的概率较低。</span>
+<span>	</span><span>➢基本思想：因此，NIST的研究人员提出了另外一种处理方法，就是用n-gram同现概率的算术平均值取代几何平均值。另外，如果一个n元词在参考译文中出现的次数越少，表明它所包含的信息量越大，那么，它对于该n元词就赋予更高的权重。</span></p><p><span>◆统计翻译中的译文错误</span></p><p><span>(1) 模型错误：概率最高的译文不是正确的</span>
+<span>(2) 搜索错误：概率最高的译文是正确的，但搜索算法找不到。这类错误大约占5％。</span></p><p>&nbsp;</p><h2 id='神经网络机器翻译'><span>神经网络机器翻译</span></h2><h3 id='单词表示模型'><span>单词表示模型</span></h3><p><span>在神经语言建模中，每个单词都会被表示为一个实数向量。这对应了一种单词</span>
+<span>的表示模型。下面就来看看传统的单词表示模型和这种基于实数向量的单词表示模</span>
+<span>型有何不同。</span></p><h4 id='one-hot-编码'><span>One-hot 编码</span></h4><p><span>One-hot 编码（也称独热编码）是传统的单词表示方法。One-hot 编码把单词表示为词汇表大小的 0-1 向量，其中只有该词所对应的那一项是 1，而其余所有项都是 0。举个简单的例子，假如有一个词典，里面包含 10k 个单词，并进行编号。那么每个单词都可以表示为一个 10k 维的 One-hot 向量，它仅在对应编号那个维度为 1，其他维度都为 0，如图9.45所示。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701134606.png" alt="image-20210701134606786" style="zoom: 67%;" /></p><p><span>One-hot 编码的优点是形式简单、易于计算，而且这种表示与词典具有很好的对应关系，因此每个编码都可以进行解释。但是，One-hot 编码把单词都看作是相互正交的向量。这导致所有单词之间没有任何的相关性。只要是不同的单词，在 One-hot编码下都是完全不同的东西。比如，大家可能会期望诸如“桌子”和“椅子”之类的词具有一些相似性，但是 One-hot 编码把它们看作相似度为 0 的两个单词。</span></p><h4 id='分布式表示'><span>分布式表示</span></h4><p><span>神经语言模型中使用的是一种分布式表示。在神经语言模型里，每个单词不再是完全正交的 0-1 向量，而是在多维实数空间中的一个点，具体表现为一个实数向量。很多时候，也会把单词的这种分布式表示叫做词嵌入。</span></p><p><span>单词的分布式表示可以被看作是欧式空间中的一个点，因此单词之间的关系也可以通过空间的几何性质进行刻画。如图9.46所示，可以在一个 512 维空间上表示不同的单词。在这种表示下，“桌子”与“椅子”之间是具有一定的联系的。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701134912.png" alt="image-20210701134912668" style="zoom:67%;" /></p><p><span>那么，分布式表示中每个维度的含义是什么？可以把每一维度都理解为一种属性，比如一个人的身高、体重等。但是，神经网络模型更多的是把每个维度看作是单词的一种抽象“刻画”，是一种统计意义上的“语义”，而非简单的人工归纳的事物的一个个属性。使用这种连续空间的表示的好处在于，表示的内容（实数向量）可以进行计算和学习，因此可以通过模型训练得到更适用于自然语言处理的单词表示结果。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701134849.png" alt="image-20210701134848884" style="zoom: 50%;" /></p><p><span>语言模型的词嵌入是通过词嵌入矩阵进行存储的，矩阵中的每一行对应了一个</span>
+<span>词的分布式表示结果。图9.48展示了一个词嵌入矩阵的实例。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701135028.png" alt="image-20210701135028681" style="zoom: 67%;" /></p><p><span>通常，有两种方法得到词嵌入矩阵。一种方法是把词嵌入作为语言模型的一部分进行训练，不过由于语言模型往往较复杂，这种方法非常耗时；另一种方法使用更加轻便的外部训练方法，如 word2vec[423] 、Glove[166] 等。由于这些方法的效率较高，因此可以使用更大规模的数据得到更好的词嵌入结果。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701113107.png" alt="image-20210701113107849" style="zoom:53%;" /></p><h4 id='word2vec'><span>word2vec</span></h4><p><span>word2vec是Google在2013年开源的一款将词表征为实数值向量的高效工具。</span></p><p><span>word2vec采用了CBOW(Continuous Bag-Of-Words，连续词袋模型)和Skip-Gram两种模型。</span></p><p><span>Word2Vec模型即是一种典型的</span><strong><span>分布编码方式</span></strong><span>。</span></p><h5 id='cbow'><span>CBOW</span></h5><p><span>连续词袋模型(Continuous Bag-of-Word Model, CBOW)是一个三层神经网络。</span></p><p><span> 输入已知上下文，输出对下个单词的预测。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701135427.jpeg" alt="img" style="zoom: 67%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701140313.png" alt="img" style="zoom: 33%;" /></p><p><strong><span>CBOW模型</span></strong></p><ul><li><span>第一层是输入层, 输入已知上下文的词向量. </span></li><li><span>中间一层称为线性隐含层, 它将所有输入的词向量累加.</span></li><li><span>第三层是一棵哈夫曼树, 树的的叶节点与语料库中的单词一一对应, 而树的每个非叶节点是一个二分类器(一般是softmax感知机等), 树的每个非叶节点都直接与隐含层相连.</span></li><li><span>将上下文的词向量输入CBOW模型, 由隐含层累加得到中间向量。</span></li><li><span>将中间向量输入哈夫曼树的根节点, 根节点会将其分到左子树或右子树。</span></li><li><span>每个非叶节点都会对中间向量进行分类, 直到达到某个叶节点。</span></li><li><span>该叶节点对应的单词就是对下个单词的预测。</span></li></ul><p>&nbsp;</p><p><strong><span>训练步骤</span></strong></p><ul><li><span>首先根据预料库建立词汇表, 词汇表中所有单词拥有一个随机的词向量.我们从语料库选择一段文本进行训练.</span></li><li><span>将单词W的上下文的词向量输入CBOW, 由隐含层累加, 在第三层的哈夫曼树中沿着某个特定的路径到达某个叶节点, 从给出对单词W的预测.</span></li><li><span>训练过程中我们已经知道了单词W, 根据W的哈夫曼编码我们可以确定从根节点到叶节点的正确路径, 也确定了路径上所有分类器应该作出的预测.</span></li><li><span>我们采用梯度下降法调整输入的词向量, 使得实际路径向正确路径靠拢.在训练结束后我们可以从词汇表中得到每个单词对应的词向量.</span></li></ul><h5 id='skip-gram'><span>Skip-gram</span></h5><p><span>Skip-gram模型同样是一个三层神经网络。</span></p><p><span>skip-gram模型的结构与CBOW模型正好相反，每一个单词从树根开始到达叶节点可以预测出它上下文中的一个单词，对每个单词进行N-1次迭代, 得到对它上下文中所有单词的预测, 根据训练数据调整词向量得到足够精确的结果。</span></p><p><span>skip-gram模型输入某个单词，输出对它上下文词向量的预测。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701135451.jpeg" alt="img" style="zoom:67%;" /></p><h3 id='transfer-learning'><span>transfer learning</span></h3><p><span>迁移学习（Transfer Learning）是一种机器学习的方法，指的是一个预训练的模型被重新用在另一个任务中，而并不是从头训练一个新的模型[547] 。迁移学习的目标是将某个领域或任务上学习到的知识应用到新的领域或问题中。在机器翻译中，可以用富资源语言的知识来改进低资源语言上的机器翻译性能，也就是将富资源语言中的知识迁移到低资源语言中。</span>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701141517.png" alt="image-20210701141517761" style="zoom:50%;" /></p><h4 id='model-fine-tuning-labelled-source-labelled-target'><span>Model Fine-tuning (labelled source, labelled target)</span></h4><ul><li><p><span>任务描述</span>
+<span>目标数据量很少，源数据量很多。（One-shot learning：在目标域中只有几个或非常少的样例）</span></p></li><li><p><span>例子：（有监督）讲话者调整</span>
+<span>目标数据：语音数据和某一特定讲话者的稿子。</span>
+<span>源数据：语音数据和很多讲话者的稿子。</span></p></li><li><p><span>想法：用源数据训练一个模型，然后用目标数据微调模型</span></p><ul><li><span>难点：只有很有限的目标数据，所以要注意过拟合问题。</span></li><li><span>一个解决过拟合难点的训练方法： Conservative Training（保留训练）</span></li></ul></li></ul><p><span>在微调新模型时加入限制（regularization），比如要求微调后的新模型与旧模型针对相同的输入的输出越相似越好，或者说模型的参数越相似越好。</span>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701142648.png" style="zoom:50%;" /></p><ul><li><p><span>另一种方法：Layer Transfer（层转移器）</span>
+<span>将用源数据训练好的模型的某几层取出/拷贝（连带参数），然后用目标数据去训练没有保留（拷贝出来）的层。</span>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701142839.png" alt="image-20210701142807394" style="zoom:50%;" /></p></li><li><p><span>那么，这里就产生一个问题：究竟哪些层应该被转移（拷贝）呢？答案是：针对不同的学习任务，往往是需要不一样的层。</span></p><ul><li><span>在语音识别上，一般拷贝最后几层。（直觉：不同的人由于口腔结构差异，同样的发音方式得到的声音可能不同。而模型的前几层做的事是讲话者的发音方式，后面的几层再根据发音方式就可以获得被辨识的文字，即是跟具体讲话者没有太大关系的，所以做迁移时，只保留后面几层即可，而前面几层就利用新的特定讲话者的目标数据来做训练）</span></li><li><span>在图像识别上，一般拷贝前几层。（直觉：网络的前几层一般学到的是最简单的模式（比如直线，横线或最简单的几何模型），比较通用，而后几层学习到的模式已经很抽象了，很难迁移到其它的领域）</span></li></ul></li></ul><h4 id='multitask-learning-labelled-source-labelled-target'><span>Multitask Learning (labelled source, labelled target)</span></h4><p><span>在Fine-tuning上，我们其实只关心迁移模型在目标数据域上的学习任务完成的好不好，而不关心在源数据域上表现如何。而Multitask Learning是会同时关注这两点的。</span>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701142929.png" alt="image-20210701142929567" style="zoom:50%;" /></p><p><span>我们针对两种任务A和B，我们用它们的数据一起训练NN模型的前几层，再分别训练模型的后面几层包括输出层，以针对各自任务输出针对性的结果，这样的好处是由于训练数据量的增加，模型的性能可能会更好。关键是要确定两个任务有没有共通性，即是不是能共用前面几层。</span>
+<span>另外，也可以在中间几层用共同数据来训练。</span>
+<span>多任务学习比较成果的一个应用实例是：多语言识别。</span>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701143005.png" alt="image-20210701143004889" style="zoom:50%;" />
+<span>如上图，多国语言语音识别模型的前几层共享一些公共特征。</span>
+<span>那么，就又产生了一个问题：语言迁移的范围可以有多广呢？</span>
+<span>先针对Task1训练一个NN，在训练Task2的NN时，它的每一个隐层都会借用一个Task1中的NN的隐层（也可以直接设为全0的参数，相当于不借用），这样对Task1的模型性能不会有影响，也可以在Task2中对其已有参数进行借用。</span>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701143032.png" alt="image-20210701143032834" style="zoom:50%;" /></p><h4 id='domain-adversarial-training-labelled-source-unlabelled-target'><span>Domain-adversarial training (labelled source, unlabelled target)</span></h4><ul><li><span>任务描述</span>
+<span>源数据对应的学习任务和目标数据对应的学习任务是比较相似的，都是做数字识别，但是两者的输入数据差别很大（目标数据加入了背景），那如何让源数据上学出来的模型也能在目标数据上发挥良好呢？</span>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701143137.png" alt="image-20210701143137037" style="zoom:50%;" />
+<span>而既然源数据的标签已知，目标数据的标签未知，那么我们可以将源数据当做训练数据，目标数据作测试数据来进行迁移。</span></li><li><span>Domain-adversarial training</span>
+<span>而如果我们直接用MNIST的数据学一个model，去做MNIST-M的识别，效果是会非常差的。</span>
+<span>而我们知道，一个NN前几层做的事情相当于特征抽取（feature extraction），后几层做的事相当于分类（Classification），所以我们将前面几层的输出结果拿出来看一下会是什么样子。</span>
+<span>如下图，MNIST的数据可以看做蓝色的点，MNIST-M的点可以看做红色的点，所以它们分别对应的特征根本不一样，所以做迁移时当然效果很差。</span>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701143232.png" alt="image-20210701143232145" style="zoom:50%;" />
+<span>于是思考：能不能让NN的前几层将不同域的各自特性消除掉，即把不同的域特性消除掉。</span>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701143211.png" alt="image-20210701143211794" style="zoom:50%;" />
+<span>怎么训练这样一个NN呢？</span>
+<strong><span>训练一个域分类器，让它无法准确地对特征提取器的结果进行分类。（“骗过”分类器，类似GAN的思想）</span></strong><span>。但是，在GAN里面，生成器是要生成一张图片来骗过判别器，这个是很困难的，而这里如果只是要骗过域分类器就太简单了，直接让域分类器对任意输入都输出0就行了。这样学出来的特征提取器很可能是完全无效的。所以，我们应该给特征提取器增加学习难度。</span>
+<strong><span>所以，我们还要求特征提取器的输出能够满足标签预测器（label predictor）的高精度判别需求。</span></strong>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701143322.png" alt="image-20210701143321981" style="zoom:50%;" />
+<span>那么如何让特征提取器的训练满足我们上述两个要求呢？也不难，针对标签预测器的反向传播的误差，我们按照误差的方向进行正常的参数调整，</span><strong><span>而针对域分类器反向传回的误差，我们则按照误差的反方向进行误差调整（即域分类器要求调高某个参数值以提高准确度，而我们就故意调低对应参数值，以“欺负”它）。</span></strong><span>所以在域分类器的误差上加个负号就可以。</span></li></ul><h4 id='zero-shot-leaning-labelled-source-unlabelled-target'><span>Zero-shot Leaning (labelled source, unlabelled target)</span></h4><p><span>在Zero-shot Learning里面，相对有比Domain-adversarial training更严苛的定义，它要求迁移的两种任务差别也是很大的。</span>
+<span>如下图，源数据是猫狗图片，而目标数据是草泥马图片，这两种分类任务属于不同的任务了。</span>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701143408.png" alt="image-20210701143408664" style="zoom:50%;" /></p><ul><li><span>影像识别上的做法</span>
+<span>我们首先将分类任务中对应的所有分类目标的属性存在数据库里，并且必须保证每个分类目标的属性组合独一无二（属性组合重复的两者将无法在下述方法中区分）。</span>
+<span>如下图，那么，我们在学习NN模型时，不再要求NN的输出直接是样例的分类，而要求是对应的分类目标包含哪些属性。那么，我们再在目标数据/测试数据上做分类时，也只要先用模型获提取出样例的属性，再查表即可。</span>
+<span>而如果数据特征变得复杂（比如是图片作为输入），那么我们就可以做embedding，即尝试训练一个NN，将样例特征映射到一个低维的embedding空间，然后让映射后的结果和样例对应的属性尽可能地相近。</span>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701143546.png" alt="image-20210701143546538" style="zoom:50%;" />
+<span>但是，如果我们没有数据库（没有属性数据）呢？</span>
+<strong><span>借用Word Vector的概念</span></strong><span>：word vector的每一个dimension代表了当前这个word的某一个属性，所以其实我们也不需要知道具体每个动物对应的属性是什么，只要知道每个动物对应的word vector就可以了。即将属性换成word vector，再做embedding。</span>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701143612.png" alt="image-20210701143612832" style="zoom:50%;" /></li><li><span>Zero-shot Learning 的训练</span>
+<span>思想：</span><strong><span>让同一对的x与y尽量靠近，让不同对的x与y尽量远离。</span></strong>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701143633.png" alt="image-20210701143633682" style="zoom:50%;" />
+<span>还有一种训练方法更简单：Convex Combination of Semantic Embedding</span>
+<span>假设训练出一个狮虎分类器，它对于一张图片给出了“50%是狮子，50%是老虎”的结果，那么我们就将狮子和老虎对应的word vector分别乘以0.5再加和，获得新的vector，看这个vector和哪个动物对应的vector最相近（比如狮虎兽liger最相近）。</span>
+<span>而做这个只要求我们有一组word vector和一个语义辨识系统即可。</span>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701143652.png" alt="image-20210701143652729" style="zoom:50%;" /></li></ul><h4 id='self-taught-learning-和-self-taught-clustering'><span>Self-taught learning 和 Self-taught Clustering</span></h4><p><span>这两种都是源数据无标签的。</span>
+<span>self-taught learning可以看做一种半监督学习（semi-supervised learning），只是源数据和目标数据关系比较“疏远”。我们可以尝试利用源数据去提取出更好的representation（无监督方法），即学习一个好的Feature extractor，再用这个extractor去帮助有标签的目标数据的学习任务。</span>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701143713.png" alt="image-20210701143713753" style="zoom:50%;" /></p><h4 id='前馈神经网络语言模型'><span>前馈神经网络语言模型</span></h4><p><span>最具代表性的神经语言模型是前馈神经网络语言模型（Feed-forward Neural Net-work Language Model，FNNLM）。这种语言模型的目标是用神经网络计算 P (wm|wm−n+1...wm−1)，之后将多个 n-gram 的概率相乘得到整个序列的概率[72] 。为了有一个直观的认识，这里以 4-gram 的 FNNLM 为例，即根据前三个单词wi−3、wi−2 、wi−1 预测当前单词 wi 的概率。模型结构如图9.42所示。从结构上看，FNNLM 是一个典型的多层神经网络结构。主要有三层：</span>
+<span>• 输入层（词的分布式表示层），即把输入的离散的单词变为分布式表示对应的实数向量；</span>
+<span>• 隐藏层，即将得到的词的分布式表示进行线性和非线性变换；</span>
+<span>• 输出层（Softmax 层），根据隐藏层的输出预测单词的概率分布。</span>
+<span>这三层堆叠在一起构成了整个网络，而且也可以加入从词的分布式表示直接到输出层的连接（红色虚线箭头）。</span>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701144007.png" alt="image-20210701144007532" style="zoom: 80%;" /></p><h4 id='编码器-解码器模型'><span>编码器-解码器模型</span></h4><p><span>编码器-解码器框架的创新之处在于，将传统基于符号的离散型知识转化为分布式的连续型知识。比如，对于一个句子，它可以由离散的符号所构成的文法规则来生成，也可以直接被表示为一个实数向量记录句子的各个“属性”。这种分布式的实数向量可以不依赖任何离散化的符号系统，简单来说，它就是一个函数，把输入的词串转化为实数向量。更为重要的是，这种分布式表示可以被自动学习。或者从某种意义上说，编码器-解码器框架的作用之一就是学习输入序列的表示。表示结果学习的好与坏很大程度上会影响神经机器翻译系统的性能。</span>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701144121.png" alt="image-20210701144121748" style="zoom: 80%;" />
+<span>实际上，编码器-解码器模型也并不是表示学习实现的唯一途径。比如，在第九章提到的神经语言模型实际上也是一种有效的学习句子表示的方法，它所衍生出的预训练模型可以从大规模单语数据上学习句子的表示形式。这种学习会比使用少量的双语数据进行编码器和解码器的学习更加充分。相比机器翻译任务，语言模型相当于一个编码器的学习 4，可以无缝嵌入到神经机器翻译模型中。不过，值得注意的是，机器翻译的目的是解决双语字符串之间的映射问题，因此它所使用的句子表示是为了更好地进行翻译。从这个角度说，机器翻译中的表示学习又和语言模型中的表示学习有不同。</span>
+<img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701144213.png" alt="image-20210701144212871" style="zoom:67%;" /></p><p><span>翻译过程的神经网络结构如图10.7所示，其中左边是编码器，右边是解码器。</span></p><p><span>编码器会顺序处理源语言单词，将每个单词都表示成一个实数向量，也就是每个单词的词嵌入结果（绿色方框）。在词嵌入的基础上运行循环神经网络（蓝色方框）。在编码下一个时间步状态的时候，上一个时间步的隐藏状态会作为历史信息传入循环神经网络。这样，句子中每个位置的信息都被向后传递，最后一个时间步的隐藏状态（红色方框）就包含了整个源语言句子的信息，也就得到了编码器的编码结果 ——源语言句子的分布式表示。</span></p><p><span>解码器直接把源语言句子的分布式表示作为输入的隐层状态，之后像编码器一样依次读入目标语言单词，这是一个标准的循环神经网络的执行过程。与编码器不同的是，解码器会有一个输出层，用于根据当前时间步的隐层状态生成目标语言单词及其概率分布。可以看到，解码器当前时刻的输出单词与下一个时刻的输入单词是一样的。从这个角度说，解码器也是一种神经语言模型，只不过它会从另外一种语言（源语言）获得一些信息，而不是仅仅做单语句子的生成。具体来说，当生成第一个单词“I”时，解码器利用了源语言句子表示（红色方框）和目标语言的起始词“</span><sos><span>”。在生成第二个单词“am”时，解码器利用了上一个时间步的隐藏状态和已经生成的“I”的信息。这个过程会循环执行，直到生成完整的目标语言句子。从这个例子可以看出，神经机器翻译的流程其实并不复杂：首先通过编码器神经网络将源语言句子编码成实数向量，然后解码器神经网络利用这个向量逐词生成译文。现在几乎所有的神经机器翻译系统都采用类似的架构。</span></p><h4 id='循环神经网络模型'><span>循环神经网络模型</span></h4><p><strong><span>RNN</span></strong></p><p><span>虽然 RNN 的结构很简单，但是已经具有了对序列信息进行记忆的能力。实际上，基于 RNN 结构的神经语言模型已经能够取得比传统 n-gram 语言模型更优异的性能。在机器翻译中，RNN 也可以做为入门或者快速原型所使用的神经网络结构。后面会进一步介绍更加先进的循环单元结构，以及搭建循环神经网络中的常用技术。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701144341.png" referrerpolicy="no-referrer" alt="image-20210701144341725"></p><p><span>图10.8展示了一个循环神经网络处理序列问题的实例。当前时刻循环单元的输入由上一个时刻的输出和当前时刻的输入组成，因此也可以理解为，网络当前时刻计算得到的输出是由之前的序列共同决定的，即网络在不断地传递信息的过程中记忆了历史信息。以最后一个时刻的循环单元为例，它在对“开始”这个单词的信息进行处理时，参考了之前所有词（“</span><sos><span> 让 我们”）的信息。</span></p><p><span>在神经机器翻译里使用循环神经网络也很简单。只需要把源语言句子和目标语言句子分别看作两个序列，之后使用两个循环神经网络分别对其进行建模。</span></p><p><span>这个过程如图10.9所示。图中，下半部分是编码器，上半部分是解码器。编码器利用循环神经网络对源语言序列逐词进行编码处理，同时利用循环单元的记忆能力，不断累积序列信息，遇到终止符 </span><eos><span> 后便得到了包含源语言句子全部信息的表示结果。解码器利用编码器的输出和起始符 </span><sos><span> 开始逐词地进行解码，即逐词翻译，每得到一个译文单词，便将其作为当前时刻解码器端循环单元的输入，这也是一个典型的神经语言模型的序列生成过程。解码器通过循环神经网络不断地累积已经得到的译文的信息，并继续生成下一个单词，直到遇到结束符 </span><eos><span>，便得到了最终完整的译文。</span></p><h5 id='lstm'><span>LSTM</span></h5><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701144721.png" alt="image-20210701144721264" style="zoom: 67%;" /></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701144555.png" alt="image-20210701144555038" style="zoom:45%;" /><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701144609.png" alt="image-20210701144609502" style="zoom:45%;" /></p><h5 id='gru'><span>GRU</span></h5><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701144826.png" alt="image-20210701144826041" style="zoom: 67%;" /></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701144643.png" referrerpolicy="no-referrer" alt="image-20210701144643003"></p><h5 id='双向模型'><span>双向模型</span></h5><p><span>前面提到的循环神经网络都是自左向右运行的，也就是说在处理一个单词的时候只能访问它前面的序列信息。但是，只根据句子的前文来生成一个序列的表示是不全面的，因为从最后一个词来看，第一个词的信息可能已经很微弱了。为了同时考虑前文和后文的信息，一种解决办法是使用双向循环网络，其结构如图10.14所示。这里，编码器可以看作由两个循环神经网络构成，第一个网络，即红色虚线框里的网络，从句子的右边进行处理，第二个网络从句子左边开始处理，最终将正向和反向得到的结果都融合后传递给解码器。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701144928.png" alt="image-20210701144928712" style="zoom:67%;" /></p><p><span>双向模型是自然语言处理领域的常用模型，包括前几章提到的词对齐对称化、语言模型等中都大量地使用了类似的思路。实际上，这里也体现了建模时的非对称思想。也就是，建模时如果设计一个对称模型可能会导致问题复杂度增加，因此往往先对问题进行化简，从某一个角度解决问题。之后再融合多个模型，从不同角度得到相对合理的最终方案。</span></p><h4 id='注意力机制'><span>注意力机制</span></h4><p><span>早期的神经机器翻译只使用循环神经网络最后一个单元的输出作为整个序列的表示，这种方式有两个明显的缺陷：</span></p><ul><li><span>首先，虽然编码器把一个源语言句子的表示传递给解码器，但是一个维度固定的向量所能包含的信息是有限的，随着源语言序列的增长，将整个句子的信息编码到一个固定维度的向量中可能会造成源语言句子信息的丢失。显然，在翻译较长的句子时，解码器可能无法获取完整的源语言信息，降低翻译性能；</span></li><li><span>此外，当生成某一个目标语言单词时，并不是均匀地使用源语言句子中的单词信息。更普遍的情况是，系统会参考与这个目标语言单词相对应的源语言单词进行翻译。这有些类似于词对齐的作用，即翻译是基于单词之间的某种对应关系。但是，使用单一的源语言表示根本无法区分源语言句子的不同部分，更不用说对源语言单词和目标语言单词之间的联系进行建模了。</span></li></ul><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701145051.png" alt="image-20210701145051308" style="zoom:67%;" /></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701145105.png" alt="image-20210701145105852" style="zoom:67%;" /></p><h5 id='gnmt'><span>GNMT</span></h5><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701145149.png" alt="image-20210701145149548" style="zoom:67%;" /></p><h4 id='自注意力机制'><span>自注意力机制</span></h4><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701145222.png" alt="image-20210701145222565" style="zoom:67%;" /></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701145252.png" alt="image-20210701145252009" style="zoom:67%;" /></p><h3 id='transformer'><span>transformer</span></h3><p><span>首先再来回顾一下第十章介绍的循环神经网络，虽然它很强大，但是也存在一些弊端。其中比较突出的问题是，循环神经网络每个循环单元都有向前依赖性，也就是当前时间步的处理依赖前一时间步处理的结果。这个性质可以使序列的“历史”信息不断被传递，但是也造成模型运行效率的下降。特别是对于自然语言处理任务，序列往往较长，无论是传统的 RNN 结构，还是更为复杂的 LSTM 结构，都需要很多次循环单元的处理才能够捕捉到单词之间的长距离依赖。由于需要多个循环单元的处理，距离较远的两个单词之间的信息传递变得很复杂。</span>
+<span>针对这些问题，研究人员提出了一种全新的模型 —— Transformer[23] 。与循环神经网络等传统模型不同，Transformer 模型仅仅使用自注意力机制和标准的前馈神经网络，完全不依赖任何循环单元或者卷积操作。自注意力机制的优点在于可以直接对序列中任意两个单元之间的关系进行建模，这使得长距离依赖等问题可以更好地被求解。此外，自注意力机制非常适合在 GPU 上进行并行化，因此模型训练的速度更快。表12.1对比了 RNN、CNN 和 Transformer 的层类型复杂度1。</span></p><p><span>注意，Transformer 并不简单等同于自注意力机制。Transformer 模型还包含了很多优秀的技术，比如：多头注意力、新的训练学习率调整策略等等。这些因素一起组成了真正的 Transformer。下面就一起看一看自注意力机制和 Transformer 是如何工作的。</span></p><h4 id='架构'><span>架构</span></h4><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701145423.png" referrerpolicy="no-referrer" alt="image-20210701145423659"></p><p><span>图12.4展示了 Transformer 的结构。编码器由若干层组成（绿色虚线框就代表一层）。每一层（Layer）的输入都是一个向量序列，输出是同样大小的向量序列，而Transformer 层的作用是对输入进行进一步的抽象，得到新的表示结果。不过这里的层并不是指单一的神经网络结构，它里面由若干不同的模块组成，包括：</span></p><ul><li><span>自注意力子层（Self-Attention Sub-layer）：使用自注意力机制对输入的序列进行新的表示；</span></li><li><span>前馈神经网络子层（Feed-Forward Sub-layer）：使用全连接的前馈神经网络对输入向量序列进行进一步变换；</span></li><li><span>残差连接（标记为“Add”）：对于自注意力子层和前馈神经网络子层，都有一个从输入直接到输出的额外连接，也就是一个跨子层的直连。残差连接可以使深层网络的信息传递更为有效；</span></li><li><span>层标准化（Layer Normalization）：自注意力子层和前馈神经网络子层进行最终输出之前，会对输出的向量进行层标准化，规范结果向量取值范围，这样易于后面进一步的处理。</span></li></ul><h4 id='编码器'><span>编码器</span></h4><p><span>以上操作就构成了 Transformer 的一层，各个模块执行的顺序可以简单描述为：Self-Attention → Residual Connection → Layer Normalization → Feed Forward Network→ Residual Connection → Layer Normalization。编码器可以包含多个这样的层，比如，可以构建一个六层编码器，每层都执行上面的操作。最上层的结果作为整个编码的结果，会被传入解码器。</span></p><h4 id='解码器'><span>解码器</span></h4><p><span>解码器的结构与编码器十分类似。它也是由若干层组成，每一层包含编码器中的所有结构，即：自注意力子层、前馈神经网络子层、残差连接和层标准化模块。此外，为了捕捉源语言的信息，解码器又引入了一个额外的编码-解码注意力子层（Encoder-Decoder Attention Sub-layer）。这个新的子层，可以帮助模型使用源语言句子的表示信息生成目标语言不同位置的表示。编码-解码注意力子层仍然基于自注意力机制，因此它和自注意力子层的结构是相同的，只是 query、key、value 的定义不同。比如，在解码器端，自注意力子层的 query、key、value 是相同的，它们都等于解码器每个位置的表示。而在编码-解码注意力子层中，query 是解码器每个位置的表示，此时key 和 value 是相同的，等于编码器每个位置的表示。图12.5给出了这两种不同注意力子层输入的区别。</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701145656.png" alt="image-20210701145656273" style="zoom: 67%;" /></p><p><span>此外，编码器和解码器都有输入的词序列。编码器的词序列输入是为了对其进行表示，进而解码器能从编码器访问到源语言句子的全部信息。解码器的词序列输入是为了进行目标语言的生成，本质上它和语言模型是一样的，在得到前 n−1 个单词的情况下输出第 n 个单词。除了输入词序列的词嵌入，Transformer 中也引入了位置嵌入，以表示每个位置信息。原因是，自注意力机制没有显性地对位置进行表示，因此也无法考虑词序。在输入中引入位置信息可以让自注意力机制间接地感受到每个词的位置，进而保证对序列表示的合理性。最终，整个模型的输出由一个 Softmax层完成，它和循环神经网络中的输出层是完全一样的。</span></p><p><strong><span>Transformer改进</span></strong></p><p><span>对 Transformer 等模型来说，处理超长序列是较为困难的。一种比较直接的解决办法是优化自注意力机制，降低模型计算复杂度。例如，采用了基于滑动窗口的局部注意力的 Longformer 模型[808] 、基于随机特征的 Performer[727] 、使用低秩分解的 Linformer[810] 和应用星型拓扑排序的 Star-Transformer[874] 。</span></p><p>&nbsp;</p><h3 id='神经机器翻译结构优化'><span>神经机器翻译结构优化</span></h3><p><span>注意力机制的改进</span></p><p><span>神经网络连接优化及深层模型</span></p><p><span>基于句法的神经机器翻译模型</span></p><p><span>基于结构搜索的翻译模型优化</span></p><h3 id='感想'><span>感想</span></h3><p><span>如何构建一套好的机器翻译系统呢？假设我们需要为用户提供一套翻译品质不错的机器翻译系统，至少需要考虑三个方面：有足够大规模的双语句对集合用于训练、有强大的机器翻译技术和错误驱动的打磨过程。从技术应用和产业化的角度看，对于构建一套好的机器翻译系统来说，上述三个方面缺一不可。</span></p><ul><li><span>从数据角度来看，针对资源稀缺语种的机器翻译技术研究也成了学术界的研究热点。在缺乏足够大规模的双语句对集合作为训练数据的情况下，研究人员也是巧妇难为无米之炊。从技术研究和应用可行性的角度看，解决资源稀缺语种的机器翻译问题非常有价值。</span></li><li><span>从机器翻译技术来看，可实用的机器翻译系统的构建，需要多技术互补融合。做研究可以搞单点突破，但它很难能应对实际问题和改善真实应用中的翻译品质。多技术互补融合有很多研究工作，但是从应用角度来说，构建可实用的机器翻译系统，还需要考虑技术落地可行性。比如大规模知识图谱构建的代价和语言分析技术的精度如何，预训练技术对富资源场景下机器翻译的价值等。</span></li><li><span>错误驱动，即根据用户对机器翻译译文的反馈与纠正，完善机器翻译模型的过程。如果能采用隐性反馈学习方法，在用户不知不觉中不断改善、优化机器翻译品质，就非常酷了，这也许会成为将来的一个研究热点。</span></li></ul><p>&nbsp;</p><h2 id='情感分析'><span>情感分析</span></h2><p><span>◆ 情感分析研究观点挖掘、倾向性分析等</span></p><p><span>◆ 什么是观点挖掘与倾向性分析？</span></p><p><span>◆ 为什么需要观点挖掘与倾向性分析？</span></p><h3 id='相关定义'><span>相关定义</span></h3><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701110319.png" alt="image-20210701110319703" style="zoom: 67%;" /></p><h3 id='情感分析发展七项关键技术'><span>情感分析发展七项关键技术</span></h3><p><span>◼ 情感分类</span></p><ul><li><span>基于传统机器学习方法的情感分类</span></li><li><span>基于深度学习方法的情感分类</span></li><li><span>面向评价对象的情感分类</span></li></ul><p><span>◼ 情感元素抽取</span></p><ul><li><span>情感词表示学习</span></li><li><span>评价对象抽取</span></li><li><span>评价搭配抽取</span></li></ul><p><span>◼ 跨领域情感分析</span></p><ul><li><p><span>从源领域到目标领域进行模型的迁移</span></p></li><li><p><span>目的</span>
+<span>标注少量或不标注目标领域的语料，利用源领域的语料在目标领域达到较好的性能</span></p></li><li><p><span>情感分析任务的特点</span></p><ul><li><span>不同领域的评价对象不尽相同</span></li><li><span>不同领域的评价表达千差万别</span></li><li><span>不同领域中的同一情感表达的极性不同</span></li></ul></li></ul><p><span>◼ 个性化情感分析</span></p><ul><li><p><span>在情感分析中加入个性化的元素</span></p></li><li><p><span>情感分析的展示变得独特、另类、拥有自己特质的需要，独具一格</span></p></li><li><p><span>基于用户用词习惯的方法</span></p><ul><li><span>不同用户和群体情感倾向具有差异性</span></li><li><span>由于用户群体立场存在差异，不同的用户群体往往对同一话题的情感倾向不同</span></li><li><span>不同用户群体表达相同情感时，用词风格不尽相同</span></li></ul></li><li><p><span>基于认知理论的方法</span></p><ul><li><span>用户画像</span>
+<span>	</span><span>+ 属性维度：自然欣喜</span>
+<span>	</span><span>+ 性格维度：大五人格</span>
+<span>	</span><span>+ 行为维度：用户偏好</span></li><li><span>结合用户信息进行更深入的情感分析与展示</span>
+<span>	</span><span>+ 不同的用户群往往对同一话题的情感倾向不同</span>
+<span>	</span><span>+ 用户群可按性别、年龄、职业等进行区分</span></li></ul></li><li><p><span>基于网络结构的方法</span></p><ul><li><span>传统的情感分类算法仅关注文本（句子、段落）特征</span>
+<span>	</span><span>+ 单条文本的情感可能存在歧义</span></li><li><span>社交网络上用户之间的连接关系（关注、赞同、 @</span>
+<span>等），这种连接关系表征了相同的情感倾向性</span>
+<span>	</span><span>+ 在用户级别进行情感分析</span></li></ul></li></ul><p><span>◼ 隐式情感分析</span></p><ul><li><p><span>社会媒体中文本情感表达方式复杂</span></p><ul><li><span>多数没有显式情感词</span></li><li><span>多使用语言修辞表达或事实性陈述</span></li></ul></li><li><p><span>事实型隐式情感分析</span></p></li><li><p><span>修辞型隐式情感分析</span></p></li></ul><p><span>◼ 情感原因发现</span></p><ul><li><span>基于文本的情感原因发现</span></li><li><span>基于个体立场的情感原因发现</span></li><li><span>基于群体立场的情感原因发现</span></li><li><span>情感原因通常是由个体容共同作用产生的</span></li></ul><p><span>◼ 情感生成</span></p><ul><li><span>评论文本生成</span></li><li><span>情绪对话生成</span></li></ul><p><span>典型方法</span></p><ul><li><p><span>情感识别</span></p><ul><li><p><span>词级别</span></p><ul><li><p><span>任务：</span></p><ul><li><span>识别词语的情感倾向性，构建词典资源</span></li></ul></li><li><p><span>方法：</span></p><ul><li><span>基本思路：利用词之间的相似度进行扩展</span></li><li><span>基于词典的方法</span></li><li><span>基于语料库的方法</span></li></ul></li></ul></li><li><p><span>句子级别</span></p><ul><li><p><span>任务：识别句子的情感倾向性</span></p></li><li><p><span>关键问题：如何进行特征表示</span></p></li><li><p><span>分类：</span></p><ul><li><span>基于语料库的方法</span></li><li><span>基于词典的方法</span></li><li><span>融合方法</span></li></ul></li></ul></li><li><p><span>文档级别</span></p><ul><li><p><span>任务：识别篇章整体观点倾向性</span></p></li><li><p><span>绝大多数方法与句子级别方法类似</span></p><ul><li><span>特征+分类器</span></li></ul></li><li><p><span>关键问题</span></p><ul><li><span>多观点倾向性：一篇商品评论中可能包含对于商品多方面的观点，每个观点的倾向性也可能不同，如何识别篇章整体的观点倾向性</span></li></ul></li></ul></li><li><p><span>篇章级观点倾向性识别仍然可以看做是一个文本分类任务</span></p></li><li><p><span>如果仅仅是用词袋子模型，那么文档级别与句子级别在处理方法上没有区别</span></p></li><li><p><span>主要问题在多观点混合问题，篇章中局部观点与整体观点不一致</span></p></li></ul></li><li><p><span>观点挖掘</span></p><ul><li><p><span>观点对象抽取：抽取观点评价的对象</span></p></li><li><p><span>观点持有者抽取</span></p><ul><li><p><span>基本思路(Kim AAAI 2005)</span></p><ul><li><p><span>命名实体识别</span></p></li><li><p><span>句法结构特征</span>
+<span>Convolution Kernel</span></p></li><li><p><span>分类或者序列标注</span></p><p><span>SVM, Naïve Bayes, CRFs</span></p></li><li><p><span>需要指代消解</span></p></li></ul></li></ul></li></ul></li><li><p><span>观点检索</span></p><ul><li><p><span>任务：</span></p><ul><li><span>从海量文本中根据查询找到观点信息</span></li><li><span>根据主题相关度(topic relevance)与观点倾向性</span></li></ul></li><li><p><span>关键问题</span></p><ul><li><span>找到主题相关度得分与观点倾向性得分的折中</span></li></ul></li></ul></li></ul><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701111810.png" alt="image-20210701111810153" style="zoom: 50%;" /></p><h2 id='文本自动摘要'><span>文本自动摘要</span></h2><h3 id='文本摘要的定义'><span>文本摘要的定义</span></h3><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701111849.png" alt="image-20210701111849663" style="zoom: 50%;" /></p><h3 id='文本摘要分类'><span>文本摘要分类</span></h3><p><span>①文档数目：单文档摘要、多文档摘要</span></p><p><span>②输入语言与输出语言的关系：单语摘要、跨语言摘要、多语言摘要</span></p><p><span>③是否有用户输入：通用摘要、用户查询摘要</span></p><p><span>④摘要方法：抽取式摘要、压缩式摘要、理解式摘要</span></p><p><span>⑤摘要长度：标题式摘要、短摘要、长摘要</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701111913.png" alt="image-20210701111913199" style="zoom: 50%;" /></p><p>&nbsp;</p><h3 id='文本摘要方法'><span>文本摘要方法</span></h3><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701112043.png" alt="image-20210701112043729" style="zoom: 67%;" /></p><h4 id='抽取式摘要'><span>抽取式摘要</span></h4><ul><li><p><span>三个重要模块</span></p><ul><li><p><span>句子重要性评估</span></p><ul><li><span>启发式规则：句子位置（越靠段首越重要）、词频、与标题相似度以及线索词（总之、总而言之）等</span></li><li><span>机器学习方法：句子分类、最优化方法</span></li><li><span>图模型方法：TextRank（PageRank的无向图模型）、HITS算法</span></li></ul></li><li><p><span>信息冗余句子去重复</span></p><ul><li><p><span>必要性</span></p><ul><li><span>多文档摘要中，不同文档通常包含非常相似的句子</span></li><li><span>为了得到精简的摘要，需要消除冗余的句子</span></li></ul></li><li><p><span>主要方法</span></p><ul><li><span>CSIS</span></li><li><span>MMR</span></li></ul><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701112326.png" alt="image-20210701112326740" style="zoom: 67%;" /></p></li></ul></li><li><p><span>根据长度、字数等约束生成最终摘要</span></p></li></ul></li></ul><h4 id='压缩式摘要'><span>压缩式摘要</span></h4><ul><li><p><span>核心模块：句子压缩</span></p><p><span>1.可视为树结构的精简问题</span></p><p><span>2.可视为01序列标注任务</span></p></li></ul><h4 id='理解式摘要'><span>理解式摘要</span></h4><p><span>改写或重新组织原文内容形成文摘</span></p><p><span>基于AMR的方法  AMR:Abstractive Meaning  Representation</span></p><p><span>基于谓词论元结构的理解式摘要</span></p><ul><li><span>核心思想：选择并重组概念与行为</span></li><li><span>选择：基于图的重要性打分+基于约束的整数线性规划</span></li></ul><h3 id='文本摘要评价'><span>文本摘要评价</span></h3><ul><li><p><span>自动评价</span></p><ul><li><p><span>给定人工参考摘要，评价自动摘要结果的质量，综合</span>
+<span>考虑内容的忠实度与行文的流畅度</span></p></li><li><p><span>省时省力、一致性高、加速方法迭代更新</span></p></li><li><p><span>ROUGE：基于N-元组计算自动摘要与人工摘要的匹配率</span></p><p><img src="https://cdn.jsdelivr.net/gh/xupengbo-cn/image-home/img/20210701112721.png" alt="image-20210701112721611" style="zoom: 67%;" /></p></li><li><p><span>BE：基于语义单元的ROUGE，语义单元由句法分析得到</span></p></li></ul></li><li><p><span>人工评价</span></p><ul><li><span>人工评价自动摘要结果的质量</span></li><li><span>可靠性高、主观性强</span></li><li><span>内容的忠实度：金字塔方法</span></li><li><span>行文的流畅度（可读性）：1-5</span></li></ul></li></ul><p>&nbsp;</p></div></div>
+</body>
+</html>
